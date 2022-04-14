@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, get_object_or_404
 from django.views import View
 from .models import Post, Comment, Users
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-
+from django.http import HttpResponseRedirect
 
 class PostList(LoginRequiredMixin, View):
     """
@@ -52,15 +52,20 @@ class PostDetail(LoginRequiredMixin, View):
         post = Post.objects.get(pk=pk)
         form = CommentForm()
         comments = Comment.objects.filter(post=post).order_by('-created_on')
+
+        liked = False
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
     
         context = {
             'post': post,
             'form': form,
+            'liked': liked,
             'comments': comments,
         }
 
         return render(request, 'post_detail.html', context)
-        
+
 
     def post(self, request, pk, *args, **kwargs):
         """
@@ -69,6 +74,10 @@ class PostDetail(LoginRequiredMixin, View):
         post = Post.objects.get(pk=pk)
         form = CommentForm(request.POST)
         comments = Comment.objects.filter(post=post).order_by('-created_on')
+        liked = False
+
+        if post.likes.filter(id=self.request.user.id).exists():
+            liked = True
 
         if form.is_valid():
             add_comment = form.save(commit=False)
@@ -79,9 +88,22 @@ class PostDetail(LoginRequiredMixin, View):
         context = {
             'post': post,
             'form': form,
+            'liked': liked,
             'comments': comments,
         }
         return render(request, 'post_detail.html', context)
+
+class PostLike(LoginRequiredMixin, View):
+
+    def post(self, request, pk):
+        post = get_object_or_404(Post, pk=pk)
+
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
 
 class PostEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -156,4 +178,4 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         profile = self.get_object()
-        return self.request.user == profile.
+        return self.request.user == profile.user

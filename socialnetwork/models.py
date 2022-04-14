@@ -12,7 +12,11 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     upload = CloudinaryField('image', blank=True, null=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    dislike = models.ManyToManyField(User, related_name='dislikes', blank=True)
 
+    def number_of_likes(self):
+        return self.likes.count()
 
 # Models for all comments
 class Comment(models.Model):
