@@ -5,15 +5,22 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
       <div class="col-md-3 col-sm-12">
-          <h4  class="text-center rubrics"><i class="far fa-user big-icon"></i>Profile @{{ user.username }}</h4>
+          <h4  class="text-center rubrics"><i class="far fa-user big-icon"></i>Profile</h4>
       </div>
   </div>
 </div>
 
-<div class="row justify-content-center mt-3 m-5">
-    <div class="card shadow-sm  col-md-8 col-sm-12 border-bottom">
+<div class="row justify-content-center mt-3 md-3">
+    <div class="col shadow-sm  col-md-6 mx-auto">
+        <h4 class="m-2">@{{ user.username }} 
+            <span>
+                {% if request.user == user %}
+                 <a href="{% url 'profile_edit' profile.pk %}"><i class="fas fa-ellipsis-h"></i></a>
+                {% endif %}
+            </span>
+        </h4>
       {% if "placeholder" in profile.picture.url %}
-      <img src="{% static 'default_profile.png' %}" width="100" heigh="100"/>
+      <img src="{% static 'image/default_profile.png' %}" width="100" heigh="100"/>
       {% else %}
       <img src="{{ profile.picture.url }}" class="m-3" width="100" heigh="100"/>
       {% endif %}

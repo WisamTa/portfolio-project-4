@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-5 col-sm-12">
+            <a href="{% url 'profile' object.pk %}"><i class="fas fa-chevron-left back-arrow">Back</i></a>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <h4  class="text-center rubrics">Edit Profile</h4>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3 m-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-color mt-3">Save Changes!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+{%endblock%}
