@@ -57,6 +57,9 @@
                                   <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
                                   <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
                               {% endif %}</p>
+                              {% if post.upload %}
+                              <img src="{{ post.upload.url }}" class="upload-images">
+                              {% endif %}
                           <p class="p-body-font">{{ post.body }}</p>
                           <p><i class="far fa-heart"></i> 
                               <i class="far fa-sad-tear"></i> 

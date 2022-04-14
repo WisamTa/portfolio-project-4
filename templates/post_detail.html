@@ -1,4 +1,4 @@
-</form>
+{% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -6,45 +6,53 @@
 {% block content %}
 <div class="container">
     <div class="row mt-3">
-{% for comment in comments %}
-<div class="row justify-content-center mt-3 m-5">
-<div class="col-md-5 col-sm-12">
-    <p>{{ comment.author }} {{ comment.created_on }}</p>
-    <p>{{ comment.body }}</p>
-</div>
-<div class="col-md-6 mx-auto">
-    <div class="card mb-6 mx-auto">
-        <div class="card-body">
-            <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small>
-            <p class="card-header header-bg">{{ post.author }}
-                {% if request.user == post.author %}
-                    <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
-                    <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
-{% endfor %}
-</div>
-<div class="row justify-content-center mt-3 m-5">
-    <div class="col-md-6 mx-auto">
-        <div class="card mb-6 mx-auto">
-            <div class="card-body">
-                <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small></p>
-                <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small>
-                    {% if request.user == post.author %}
-                        <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
-                        <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
+        <div class="col-md-5 col-sm-12">
+            <a href="{% url 'post_feed' %}"><i class="fas fa-chevron-left back-arrow">Back</i></a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6 mx-auto">
+            <div class="card mb-6 mx-auto">
+                <div class="card-body">
+                    <p class="card-header header-bg">{{ post.author }}
+                        {% if request.user == post.author %}
+                            <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
+                            <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
+                        {% endif %}
+                    </p>
+                    {% if post.upload %}
+                    <img src="{{ post.upload.url }}" class="upload-images">
                     {% endif %}
-                </p>
-                <p>{{ post.body }}</p>
+                    <p>{{ post.body }}</p>
+                </div>
             </div>
         </div>
-        {% for comment in comments %}
-        <div class="row justify-content-center mt-3 m-5">
-            <div class="col-md-5 col-sm-12">
-                <p>{{ comment.author }} {{ comment.created_on }}</p>
-                <p>{{ comment.author }} {{ comment.created_on }}
-                    {% if request.user == comment.author %}
-                    <a href="{% url 'comment_delete' post.pk comment.pk %}"><i class="far fa-trash-alt"></i></a>
-                {% endif %}
-                </p>
-                <p>{{ comment.comment }}</p>
-            </div>
+    </div>
+</div>
+     <div class="row justify-content-center mt-3 m-5">
+        <div class="col-md-5 col-sm-12">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2">
+                    <button class="btn btn-color mt-3">Comment</button>
+                </div>
+            </form>
         </div>
+    </div>
+    {% for comment in comments %}
+    <div class="row justify-content-center mt-3 m-5">
+        <div class="col-md-5 col-sm-12">
+            <p>{{ comment.author }} {{ comment.created_on }}
+                {% if request.user == comment.author %}
+                <a href="{% url 'comment_delete' post.pk comment.pk %}"><i class="far fa-trash-alt"></i></a>
+            {% endif %}
+            </p>
+            <p>{{ comment.comment }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{%endblock%}

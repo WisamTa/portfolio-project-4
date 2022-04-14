@@ -7,11 +7,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 
-"""
-Views for the feed, listing all existing posts that been created,
-and a form to create new posts for the feed.
-"""
 class PostList(LoginRequiredMixin, View):
+    """
+    Views for the feed, listing all existing posts that been created,
+    and a form to create new posts for the feed.
+    """
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
         form = PostForm()
@@ -26,7 +26,7 @@ class PostList(LoginRequiredMixin, View):
 
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
             add_post = form.save(commit=False)
@@ -41,12 +41,12 @@ class PostList(LoginRequiredMixin, View):
         return render(request, 'post_feed.html', context)
 
 
-"""
-Views for the posts detail, when user click on a post in the feed,
-they see the post on its own and can comment, edit and delete comments,
-or edit and delete the post if its created by the user.
-"""
 class PostDetail(LoginRequiredMixin, View):
+    """
+    Views for the posts detail, when user click on a post in the feed,
+    they see the post on its own and can comment, edit and delete comments,
+    or edit and delete the post if its created by the user.
+    """
 
     def get(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -61,10 +61,11 @@ class PostDetail(LoginRequiredMixin, View):
 
         return render(request, 'post_detail.html', context)
         
-    """
-    Add a new comment to the post
-    """
+
     def post(self, request, pk, *args, **kwargs):
+        """
+        Add a new comment to the post
+        """
         post = Post.objects.get(pk=pk)
         form = CommentForm(request.POST)
         comments = Comment.objects.filter(post=post).order_by('-created_on')
@@ -83,11 +84,11 @@ class PostDetail(LoginRequiredMixin, View):
         return render(request, 'post_detail.html', context)
 
 
-"""
-Views for edit a uploaded post, and using get_successs_url to rederict back
-to the post detail template when user has submit the edit.
-"""
 class PostEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    Views for edit a uploaded post, and using get_successs_url to rederict back
+    to the post detail template when user has submit the edit.
+    """
     model = Post
     fields = ['body']
     template_name = 'post_edit.html'
@@ -101,10 +102,10 @@ class PostEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user == post.author
 
 
-"""
-Views for Delete a uploaded (by user) post from the feed.
-"""
 class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    Views for Delete a uploaded (by user) post from the feed.
+    """
     model = Post
     template_name = 'post_delete.html'
     success_url = reverse_lazy('post_feed')
@@ -114,10 +115,10 @@ class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == post.author
 
 
-"""
-Views for Delete a uploaded (by user) comment from the feed.
-"""
 class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    Views for Delete a uploaded (by user) comment from the feed.
+    """
     model = Comment
     template_name = 'comment_delete.html'
 
@@ -155,4 +156,4 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         profile = self.get_object()
-        return self.request.user == profile.use
+        return self.request.user == profile.

@@ -11,6 +11,7 @@ class Post(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    upload = CloudinaryField('image', blank=True, null=True)
 
 
 # Models for all comments
@@ -23,9 +24,9 @@ class Comment(models.Model):
 
 # Class for choosing a gender in the User class
 class Gender(Choices):
-    male = Choice("male")
-    female = Choice("female")
-    other = Choice("other")
+    male = Choice("Male")
+    female = Choice("Female")
+    other = Choice("Other")
 
 
 # Models for User profiles

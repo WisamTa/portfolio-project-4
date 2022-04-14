@@ -23,14 +23,38 @@
 .logo-img{
     width: 40%;
     height: auto;
-@@ -21,4 +39,12 @@
+}
+
+.btn-color{
+    background-color: #A6BFFF;
+}
+.btn-color:hover{
+    background-color: #A4EAC0;
+}
+
+.icon:hover{
+    font-size: 16px;
+    color: #F7BAF0;
+}
 
 .big-icon{
     background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);
-} 
 }
 
 .rubrics{
     font-family: 'Handlee', 'Times New Roman';
     font-size: 45px;
+}
+
+.upload-images{
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/*-----------------------Post-detail-----------*/
+
+textarea{
+    width: 100%;
 }
