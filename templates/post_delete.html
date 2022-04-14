@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-5 col-sm-12">
+            <a href="{% url 'post_detail' object.pk %}"><i class="fas fa-chevron-left back-arrow">Back</i></a>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3 m-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <h4  class="text-center rubrics">Delete Post</h4>
+                <p>Are you sure you want to delete this post?</p>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-color mt-3">Delete!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+{%endblock%}

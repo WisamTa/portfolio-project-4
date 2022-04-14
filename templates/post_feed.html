@@ -8,6 +8,36 @@
     <div class="row justify-content-center mt-3 m-5">
 @@ -28,7 +28,7 @@ <h4  class="text-center display-5"><i class="far fa-plus-square big-icon"></i> {
                     <div class="card mb-6 mx-auto position-relative">
+                    </div>
+                    <div class="col-md-6 mx-auto">
+                        <div class="card mb-6 mx-auto position-relative">
+                            <div class="card-body">
+                                <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small>
+                                <p class="card-header header-bg">{{ post.author }}
+                                    {% if request.user == post.author %}
+                                        <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
+                                        <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
+                                    {% endif %}</p>
+                                <p class="p-body-font">{{ post.body }}</p>
+                                <p><i class="far fa-heart"></i> 
+                                    <i class="far fa-sad-tear"></i> 
+                                    <i class="fas fa-heart-broken"></i> 
+                                    <i class="far fa-laugh-beam"></i> 
+                                    <i class="far fa-comment"></i> 
+                                    <small class="text-muted">{{ post.created_on }}</small></p>
+                                <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
+                            </div>
+                        </div>
+                    <div class="row justify-content-center mt-3 m-5">
+                        <div class="col-md-5 col-sm-12 border-bottom">
+                            <form method="POST" action="">
+                            <form method="POST" action="" class="forms">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                {{ form }}
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-color mt-3">Upload!</button>
+                                </div>
                         <div class="card-body">
                             <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small></p>
                             <p>{{ post.body }}</p>
@@ -15,3 +45,15 @@
                             <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
                         </div>
                     </div>
+                    <div class="col-md-6 mx-auto">
+                        <div class="card mb-6 mx-auto position-relative">
+                            <div class="card-body">
+                                <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small></p>
+                                <p class="card-header header-bg">{{ post.author }} <small class="text-muted">{{ post.created_on }}</small>
+                                    {% if request.user == post.author %}
+                                        <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
+                                        <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
+                                    {% endif %}</p>
+                                <p class="p-body-font">{{ post.body }}</p>
+                                <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
+                            </div>
