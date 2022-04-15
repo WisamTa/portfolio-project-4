@@ -75,6 +75,7 @@ class PostDetail(LoginRequiredMixin, View):
         form = CommentForm(request.POST)
         comments = Comment.objects.filter(post=post).order_by('-created_on')
         liked = False
+        
 
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True

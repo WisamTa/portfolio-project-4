@@ -12,9 +12,9 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-6 mx-auto">
-            <div class="card mb-6 mx-auto">
-                <div class="card-body">
+        <div class="col-md-8 sm-12 mx-auto">
+            <div class="card mb-8 sm-12 mx-auto">
+                
                     <p class="card-header header-bg">{{ post.author }}
                         {% if request.user == post.author %}
                             <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
@@ -25,16 +25,17 @@
                     <img src="{{ post.upload.url }}" class="upload-images">
                     {% endif %}
                     <p>{{ post.body }}</p>
-                </div>
+                
                 {% if user.is_authenticated %}
                 <form class="d-inline" action="{% url 'post_like' post.pk %}" method="POST">
                 {% csrf_token %}
                 {% if liked %}
 
-                    <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                    <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="fas fa-heart liked"></i></button>
 
                 {% else %}
                     <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="far fa-heart"></i></button>
+                    <span class="text-secondary"> {{ post.number_of_likes }}</span>
 
                 {% endif %}
                 </form>
