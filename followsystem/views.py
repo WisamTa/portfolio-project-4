@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views import View
 from django.http import HttpResponseRedirect
 from socialnetwork.models import Users
-from socialnetwork import views
 
 
 
