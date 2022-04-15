@@ -2,6 +2,27 @@
 This project is developed as my 4th portfolio project during my course at Code Institute and I call it shareit.
 shareit is a social media website, where users can register an account, login and create a user profile. users can upload posts with text and images on a feed for others to like and comment. users can follow other users and get along with them even in a private chat.
 
+* [Project Description](https://github.com/WisamTa/portfolio-project-4#project-description)
+* [UX](https://github.com/WisamTa/portfolio-project-4#ux)
+  * [User Stories](https://github.com/WisamTa/portfolio-project-4#user-stories)
+  * [Site Owner Goals](https://github.com/WisamTa/portfolio-project-4#site-owner-goals)
+  * [Structure](https://github.com/WisamTa/portfolio-project-4#structure)
+  * [Wireframes](https://github.com/WisamTa/portfolio-project-4#wireframes)
+* [Features](https://github.com/WisamTa/portfolio-project-4#features)
+  * [Data storage](https://github.com/WisamTa/portfolio-project-4#data-storage)
+  * [Existing Features](https://github.com/WisamTa/portfolio-project-4#existing-features)
+  * [Features Left To Implement](https://github.com/WisamTa/portfolio-project-4#features-left-to-implement)
+* [Technologies Used](https://github.com/WisamTa/portfolio-project-4#technologies-used)
+  * [Languages](https://github.com/WisamTa/portfolio-project-4#languages)
+  * [Frameworks](https://github.com/WisamTa/portfolio-project-4#frameworks)
+  * [Other Programmes](https://github.com/WisamTa/portfolio-project-4#other-programmes)
+* [Testing](https://github.com/WisamTa/portfolio-project-4#testing)
+  * [Manually test user storys](https://github.com/WisamTa/portfolio-project-4#manual-testing-by-user-storys)
+  * [Validator Testing](https://github.com/WisamTa/portfolio-project-4#validator-testing)
+  * [Bugs](https://github.com/WisamTa/portfolio-project-4#bugs)
+* [Deployment](https://github.com/WisamTa/portfolio-project-4#deployment)
+* [Credits](https://github.com/WisamTa/portfolio-project-4#credits)
+* [Ackmowledgements](https://github.com/WisamTa/portfolio-project-4#acknowledgements)
 # Content
 # UX
 ## User Stories
