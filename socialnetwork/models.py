@@ -48,6 +48,10 @@ class Users(models.Model):
     gender = models.IntegerField(choices=Gender(),default=Gender.other.id)
     location = models.CharField(max_length=100, blank=True, null=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
+    followers = models.ManyToManyField(User, blank=True, related_name='followers')
+
+    def number_of_followers(self):
+        return self.followers.count()
 
 
 """

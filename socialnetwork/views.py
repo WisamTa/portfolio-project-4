@@ -75,7 +75,7 @@ class PostDetail(LoginRequiredMixin, View):
         form = CommentForm(request.POST)
         comments = Comment.objects.filter(post=post).order_by('-created_on')
         liked = False
-        
+
 
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -158,11 +158,23 @@ class UserProfile(View):
         profile = Users.objects.get(pk=pk)
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-created_on')
+        
+        followers = profile.followers.all()
+        if len(followers) == 0:
+            follow = False
+
+        for follower in followers:
+            if follower == request.user:
+                follow = True
+                break
+            else:
+                follow = False
 
         context = {
             'user': user,
             'profile': profile,
-            'posts': posts
+            'posts': posts,
+            'follow': follow,
         }
 
         return render(request, 'user_profile.html', context)

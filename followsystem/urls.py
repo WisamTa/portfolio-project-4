@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import FollowView
+from .views import AddFollower, UnFollow
 from socialnetwork import urls
 
 urlpatterns = [
-    path('profile/followers', FollowView.as_view(), name='followers'),
+    path('profile/<int:pk>/followers/add', AddFollower.as_view(), name='add_follower'),
+    path('profile/<int:pk>/followers/remove', UnFollow.as_view(), name='un_follow'),
 ]

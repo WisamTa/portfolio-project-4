@@ -20,10 +20,27 @@
             </span>
         </h4>
       {% if "placeholder" in profile.picture.url %}
-      <img src="{% static 'image/default_profile.png' %}" width="100" heigh="100"/>
+      <img src="{% static 'image/default_profile.png' %}" class="profile-image m-3 shadow-lg rounded" />
       {% else %}
-      <img src="{{ profile.picture.url }}" class="m-3" width="100" heigh="100"/>
+      <img src="{{ profile.picture.url }}" class="m-3 profile-image shadow-lg rounded" />
       {% endif %}
+      <div>
+        <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
+        {% if user == request.user %}
+        {% else %}
+        {% if follow %}
+        <form method="POST" action="{% url 'un_follow' profile.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="unfollow-btn">Unfollow</button>
+        </form>
+        {% else %}
+        <form method="POST" action="{% url 'add_follower' profile.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="follow-btn">Follow</button>
+        </form>
+        {% endif %}
+        {% endif %}
+    </div>
       {% if profile.name %}
       <p class="m-2"><strong>Name: </strong>{{ profile.name }}</p>
       {% endif %}
@@ -44,6 +61,7 @@
       <p class="m-2">{{ profile.bio }}</p>
       {% endif %}
     </div>
+
 </div>
 </div>
           {% for post in posts %}

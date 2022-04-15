@@ -27,10 +27,16 @@
 
             {% for post in post_feed %}
             <div class="row justify-content-center">
-                <div class="col-md-8 mx-auto mt-3">
-                    <div class="card mb-8 mx-auto">
+                <div class="col-md-8 mx-auto">
+                    <div class="card mb-8 mt-3 mx-auto">
                         
-                            <p class="card-header header-bg">{{ post.author }}
+                            <p class="card-header header-bg">
+                                {% if "placeholder" in post.author.profile.picture.url %}
+                                <img width="25" heigh="25" src="{% static 'image/default_profile.png' %}"/>
+                                {% else %}
+                                <img height="25" width="25" src="{{ post.author.profile.picture.url }}" />
+                                {% endif %}
+                                <a href="{% url 'profile' post.author.profile.pk %}">{{ post.author }}</a>
                                 {% if request.user == post.author %}
                                     <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
                                     <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
