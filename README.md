@@ -71,10 +71,6 @@ Showing some information of what the site is about, have an about us file and a 
   * Add profile image and edit profile.
   * See how many followers (moon friends) they have and a button to follow or unfollow other users.
   * Uploaded posts that the user have is collected on their own pages.  
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/profile%20page.png)
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/edit%20profile.png)
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/all%20post%20on%20profile.png)
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/follow%20button.png)
 * Inbox
   * An inbox that gathers all active threads
   * Start a new chat and search for a user to start chatting with
