@@ -60,12 +60,8 @@ shareit is a social media website, where users can register an account, login an
 ## Structure
 * Landing page/start page for un authentical users.
 Showing some information of what the site is about, have an about us file and a login and register form.  
-![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/landindpage.png)  
-![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/start%20menu.png)
 * Landingpage for logged in users
   * Feed, when user sign up they are provide some information of how to upload, create more information in profile page, this text will dissapere when the user upload their first post or start follow users who have upload posts earlier.  
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/landing%20for%20new%20register.png)
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/nav%20bar%20logged%20in.png)
 * Profile page
   * Personal page for the user, with fields of information to add about themself
   * Add profile image and edit profile.
