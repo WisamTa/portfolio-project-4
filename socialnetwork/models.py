@@ -1,5 +1,7 @@
+
 from django.db import models
 from dj.choices import Choices, Choice
+from dj.choices.fields import ChoiceField
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save
@@ -45,13 +47,22 @@ class Users(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     picture = CloudinaryField('image', default='placeholder')
     birthday = models.DateField(blank=True, null=True)
-    gender = models.IntegerField(choices=Gender(),default=Gender.other.id)
+    gender = models.IntegerField(choices=Gender(), default=Gender.other.name)
     location = models.CharField(max_length=100, blank=True, null=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
     followers = models.ManyToManyField(User, blank=True, related_name='followers')
 
     def number_of_followers(self):
         return self.followers.count()
+    
+    def user_gender(self):
+        gender = Gender.from_id(self.gender)
+        if gender == Gender.male:
+            return 'Male'
+        elif gender == Gender.female:
+            return 'Female'
+        else:
+            return 'Other'
 
 
 """

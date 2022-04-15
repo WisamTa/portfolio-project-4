@@ -53,8 +53,12 @@
       <p class="m-2"><strong>Birthday: </strong>{{ profile.birthday }}</p>
       {% endif %}
 
-      {% if profile.gender %}
-      <p class="m-2"><strong>Gender: </strong>{{ profile.gender }}</p>
+      {% if profile.gender == 1 %}
+      <p class="m-2"><strong>Gender: </strong>Male</p>
+      {% elif profile.gender == 2 %}
+      <p class="m-2"><strong>Gender: </strong>Female</p>
+      {% else %}
+      <p class="m-2"><strong>Gender: </strong>Other</p>
       {% endif %}
 
       {% if profile.bio %}
