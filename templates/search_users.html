@@ -3,24 +3,28 @@
 
 {% block content %}
 
-<h1>SEARCH</h1>
-<div>
-    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search_user' %}">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" value="{{ request.GET.query }}">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-</div>
-
-<h2>RESULT</h2>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-3 col-sm-12">
+            <h4  class="text-center rubrics"><i class="fas fa-search big-icon"></i>Search Result</h4>
+        </div>
+    </div>
+  </div>
 
 <div class="container">
     {% for result in results %}
     <div class="row justify-content-center mt-3">
-        <div class="col-md-5 position-relative">
+        <div class="col-md-5 col-sm-12 ">
               
-                <p><a href="{% url 'profile' result.pk %}">{{ result.user }}</a></p>
+                <p class="search-result">
+                    {% if "placeholder" in result.user.profile.picture.url %}
+                    <img width="30" heigh="30" class="rounded-circle" src="{% static 'image/default_profile.png' %}"/>
+                    {% else %}
+                    <img height="30" width="30" class="rounded-circle" src="{{ result.user.profile.picture.url }}" />
+                    {% endif %}
+                    <a href="{% url 'search_user' result.pk %}">{{ result.user }}</a>
+                </p>
         </div>
-       
     </div>
     {% endfor %}
 </div>

@@ -33,24 +33,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             {% if user.is_authenticated %}
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" title="Account" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+                {% if "placeholder" in request.user.profile.picture.url %}
+                <img class="rounded-circle"  width="30" heigh="30" src="{% static 'image/default_profile.png' %}"/>
+                {% else %}
+                <img class="rounded-circle"  height="30" width="30" src="{{ request.user.profile.picture.url }}" /> 
+                {% endif %}
+                {{ request.user.username }}
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                 <a class="dropdown-item" title="Profile-page" href="{% url 'profile' user.profile.pk %}">Profile</a>
+                 <a class="dropdown-item" title="Logout" href="{% url 'account_logout' %}">Logout</a>
+               </div>
+             </li>
+
             <li class="nav-item">
               <a class="nav-link" title="social feed"  href="{% url 'post_feed' %}"><i class="far fa-plus-square icon"></i></a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" title="Search users" href="{% url 'search_user' %}"><i class="fas fa-search icon"></i></a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" title="Messages" href="#"><i class="far fa-envelope icon"></i></a>
           </li>
-            <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle" title="Account" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <i class="far fa-user icon"></i>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" title="Profile-page" href="{% url 'profile' user.profile.pk %}">Profile</a>
-                <a class="dropdown-item" title="Logout" href="{% url 'account_logout' %}">Logout</a>
-              </div>
-            </li>
+
+            <form class="d-flex form-inline" method="GET" action="{% url 'search_user' %}">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search by username" aria-label="Search" name="query" value="{{ request.GET.query }}">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'account_login' %}">Login</a>
@@ -71,7 +82,7 @@
       </div>
     </nav>
 
-    {% if messages %}
+    <!--{% if messages %}
     <div class="row justify-content-center pt-3">
       <div class="col-md-6">
         {% for message in messages %}
@@ -79,10 +90,37 @@
         {% endfor %}
     </div>
     </div>
-    {% endif %}
+    {% endif %} -->
     <div class="mt-5">
+
+  <main class="flex-shrink-0 main-bg"> 
+
     {% block content %}
     {% endblock %}
+  </main>
+  <footer class="text-center text-white footer-social-bg mt-3">
+    <div class="container pt-4">
+      <section class="mb-4">
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#" role="button" data-mdb-ripple-color="dark">
+          <i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#" role="button" data-mdb-ripple-color="dark">
+          <i class="fab fa-instagram"></i></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#" role="button">
+          <i class="fab fa-linkedin"></i></a>
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+    </div>
+    <div class="text-center p-1 footer-copy">
+      © 2022 Copyright:
+      <p class="text-dark">Stina Carolin Axelsson</p>
+    </div>
+
     {% endblock %}
    
 

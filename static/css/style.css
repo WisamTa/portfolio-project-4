@@ -37,7 +37,7 @@
     color: #F7BAF0;
 }
 
-.big-icon{
+.big-icon i{
     background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);
 }
 
@@ -46,11 +46,101 @@
     font-size: 45px;
 }
 
+.feed-username{
+    text-decoration: none;
+    font-family: 'Handlee';
+    color: black;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.feed-username:hover{
+    color: #A4EAC0;
+}
+
 .upload-images{
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
     margin-bottom: 10px;
+}
+
+.btn-like{
+    background: white;
+    border: none;
+    margin-left: 15px;
+}
+.liked{
+    color: #F7BAF0;
+}
+/*-----------------------Post-detail-----------*/
+
+textarea{
+    width: 100%;
+}
+
+/*----------------------Profile----------------*/
+
+.follow-btn{
+    background-color: #A4EAC0;
+    border-radius: 10px;
+    font-family: 'Handlee';
+}
+
+.unfollow-btn{
+    background-color: #A6BFFF;
+    border-radius: 10px;
+    font-family: 'Handlee';
+}
+
+.profile-image{
+    width: 15rem;
+    height: 15rem;
+}
+
+.moon-friends{
+    text-align: center;
+    font-family: 'Handlee';
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.bio{
+    text-align: center;
+}
+
+.bio-username{
+    text-align: center;
+    font-family: 'Handlee';
+    font-weight: bold;
+}
+
+/*-------------------------------Search results-----*/
+
+.search-result, 
+.bio-text{
+    
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.search-result a{
+    text-decoration: none;
+    color: black;
+}
+
+.search-result:hover{
+    border-bottom: black 1px solid;
+}
+
+/*--------------------------Footer--------*/
+
+.footer-copy{
+    background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);
+}
+
+.footer-social-bg{
+    background: rgb(165 220 213);
 }
 
 /*-----------------------Post-detail-----------*/

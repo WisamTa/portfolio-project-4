@@ -28,46 +28,45 @@
             {% for post in post_feed %}
             <div class="row justify-content-center">
                 <div class="col-md-8 mx-auto">
-                    <div class="card mb-8 mt-3 mx-auto">
-                        
-                            <p class="card-header header-bg">
-                                {% if "placeholder" in post.author.profile.picture.url %}
-                                <img width="25" heigh="25" src="{% static 'image/default_profile.png' %}"/>
-                                {% else %}
-                                <img height="25" width="25" src="{{ post.author.profile.picture.url }}" />
-                                {% endif %}
-                                <a href="{% url 'profile' post.author.profile.pk %}">{{ post.author }}</a>
-                                {% if request.user == post.author %}
-                                    <a href="{% url 'post_edit' post.pk %}"><i class="far fa-edit"></i></a>
-                                    <a href="{% url 'post_delete' post.pk %}"><i class="far fa-trash-alt"></i></a>
-                                {% endif %}</p>
-                                <div class="position-relative">
-                                {% if post.upload %}
-                                <img src="{{ post.upload.url }}" class="upload-images">
-                                {% endif %}
-                            <p class="p-body-font">{{ post.body }}</p>
+                    <div class="card mb-8 mt-3 mx-auto">  
+                        <div class="position-relative">
+                            {% if post.upload %}
+                            <img src="{{ post.upload.url }}" class="upload-images">
+                            {% endif %}
                             <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
-                        </div>  
-                        
-                        <div class="d-flex flex-row">
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'post_like' post.pk %}" method="POST">
-                            {% csrf_token %}
-                            {% if liked %}
-            
-                                <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="fas fa-heart"></i></button>
-            
-                            {% else %}
-                                <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="far fa-heart"></i></button>
-            
-                            {% endif %}
-                            </form>
-                            {% else %}
-                            <span class="text-secondary"><i class="far fa-heart"></i>{{ post.number_of_likes }}</span>
-                            {% endif %}
-                            <span class="text-secondary"> {{ post.number_of_likes }}  </span>
-                            <small class="text-muted"> {{ post.created_on }}</small></p>
-                            </div>
+                            </div> 
+                            <div class="m-3">
+                                {% if "placeholder" in post.author.profile.picture.url %}
+                                <img class="rounded-circle"  width="30" heigh="30" src="{% static 'image/default_profile.png' %}"/>
+                                {% else %}
+                                <img class="rounded-circle"  height="30" width="30" src="{{ post.author.profile.picture.url }}" />
+                                {% endif %}
+                                <a class="feed-username" href="{% url 'profile' post.author.profile.pk %}">{{ post.author }}</a>
+                            </div> 
+                                <div class="position-relative"> 
+                                    <p class="p-body-font m-3">{{ post.body }}</p>
+                                    <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
+                                </div>
+                                <div class="m-3">
+                                    <small class="text-muted"> {{ post.created_on }}</small>
+                                    {% if user.is_authenticated %}
+                                    <form class="d-inline" action="{% url 'post_like' post.pk %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if liked %}
+                    
+                                        <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="fas fa-moon"></i></button>
+                    
+                                    {% else %}
+                                        <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="far fa-moon"></i></button>
+                    
+                                    {% endif %}
+                                    </form>
+                                    {% else %}
+                                    <span class="text-secondary">{{ post.number_of_likes }}</span>
+                                    {% endif %}
+                                    <span class="text-secondary"> {{ post.number_of_likes }}  </span>
+                                </div>
+                    
                     </div>
                 </div>
             </div>
