@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.http import HttpResponseRedirect
 
+
 class PostList(LoginRequiredMixin, View):
     """
     Views for the feed, listing all existing posts that been created
@@ -18,7 +19,8 @@ class PostList(LoginRequiredMixin, View):
 
         posts = Post.objects.filter(
             Q(author__profile__followers__in=[following_feed.id]) | Q(
-                author__profile__in=[following_feed.id])).order_by('-created_on')
+                author__profile__in=[following_feed.id])
+                ).order_by('-created_on')
 
         context = {
             'post_feed': posts,
@@ -28,22 +30,21 @@ class PostList(LoginRequiredMixin, View):
 
 
 class Upload(LoginRequiredMixin, View):
-    """ 
+    """
     Form to upload a post from anywhere you are on the page.
     And it uploads on your own profile page, and feed.
     """
 
     def get(self, request, *args, **kwargs):
         form = PostForm()
-        
         context = {
             'form': form,
         }
 
         return render(request, 'upload_post.html', context)
 
-    def post(self, request, *args, **kwargs):
-       
+
+def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
 
         form = PostForm(request.POST, request.FILES)
@@ -53,10 +54,7 @@ class Upload(LoginRequiredMixin, View):
             add_post.author = request.user
             add_post.save()
 
-    
         return redirect('post_feed')
-
-
 
 
 class PostDetail(LoginRequiredMixin, View):
@@ -74,7 +72,7 @@ class PostDetail(LoginRequiredMixin, View):
         liked = False
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
-    
+
         context = {
             'post': post,
             'form': form,
@@ -84,7 +82,6 @@ class PostDetail(LoginRequiredMixin, View):
 
         return render(request, 'post_detail.html', context)
 
-
     def post(self, request, pk, *args, **kwargs):
         """
         Add a new comment to the post
@@ -93,7 +90,6 @@ class PostDetail(LoginRequiredMixin, View):
         form = CommentForm(request.POST)
         comments = Comment.objects.filter(post=post).order_by('-created_on')
         liked = False
-
 
         if post.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -112,11 +108,11 @@ class PostDetail(LoginRequiredMixin, View):
         }
         return render(request, 'post_detail.html', context)
 
+
 class PostLike(LoginRequiredMixin, View):
     """
-    Class for when usr likes a post 
+    Class for when usr likes a post
     """
-
     def post(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
 
@@ -124,7 +120,7 @@ class PostLike(LoginRequiredMixin, View):
             post.likes.remove(request.user)
         else:
             post.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('post_detail', args=[pk]))
 
 
@@ -139,7 +135,7 @@ class PostEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         pk = self.kwargs['pk']
-        return reverse_lazy('post_detail', kwargs={'pk':pk})
+        return reverse_lazy('post_detail', kwargs={'pk': pk})
 
     def test_func(self):
         post = self.get_object()
@@ -169,7 +165,7 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def get_success_url(self):
         pk = self.kwargs['post_pk']
         return reverse_lazy('post_detail', kwargs={'pk': pk})
-        
+
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
@@ -178,13 +174,13 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class UserProfile(View):
     """
     View for the users profile page that store information and the posts
-    that the user uploads 
+    that the user uploads
     """
     def get(self, request, pk, *args, **kwargs):
         profile = Users.objects.get(pk=pk)
         user = profile.user
         posts = Post.objects.filter(author=user).order_by('-created_on')
-        
+
         followers = profile.followers.all()
         if len(followers) == 0:
             follow = False
@@ -208,7 +204,7 @@ class UserProfile(View):
 
 class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
-    View for edit the profile page and information 
+    View for edit the profile page and information
     """
     model = Users
     fields = ['picture', 'name', 'location', 'birthday', 'gender', 'bio']
@@ -221,3 +217,7 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         profile = self.get_object()
         return self.request.user == profile.user
+
+
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)

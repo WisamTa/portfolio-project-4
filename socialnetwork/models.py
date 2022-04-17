@@ -8,6 +8,7 @@ from django.dispatch import receiver
 
 # Models for all posts
 class Post(models.Model):
+
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -18,8 +19,10 @@ class Post(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+
 # Models for all comments
 class Comment(models.Model):
+
     comment = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -51,21 +54,22 @@ class Users(models.Model):
     gender = models.IntegerField(choices=Gender(), default=Gender.other.id)
     location = models.CharField(max_length=100, blank=True, null=True)
     bio = models.TextField(max_length=500, blank=True, null=True)
-    followers = models.ManyToManyField(User, blank=True, related_name='followers')
+    followers = models.ManyToManyField(
+        User, blank=True, related_name='followers')
 
     def number_of_followers(self):
         return self.followers.count()
 
 
-
-"""
-Using receiver for saving new registerd users in the database
-for not getting errors when loggin in after created a new user.
-"""
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """
+    Using receiver for saving new registerd users in the database
+    for not getting errors when loggin in after created a new user.
+    """
     if created:
         Users.objects.create(user=instance)
+
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
