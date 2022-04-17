@@ -155,6 +155,10 @@ textarea{
 
 /*-------------------------------Search results-----*/
 
+.not-visible{
+    display: none;
+}
+
 .search-result, 
 .bio-text{
     
@@ -220,3 +224,4 @@ textarea{
 
 .footer-social-bg{
     background: rgb(165 220 213);
+}

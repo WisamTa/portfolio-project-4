@@ -57,13 +57,12 @@
               <a class="nav-link" title="Messages" href="{% url 'inbox' %}"><i class="far fa-envelope icon"></i>Inbox</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" title="Messages" href="{% url 'upload' %}"><i class="far fa-plus-square icon"></i>Upload</a>
+            <a class="nav-link" title="Upload" href="{% url 'upload' %}"><i class="far fa-plus-square icon"></i>Upload</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Messages" href="{% url 'search_user' %}"><i class="far fa-plus-square icon"></i>Search</a>
+      </li>
 
-            <form class="d-flex form-inline" method="GET" action="{% url 'search_user' %}">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search by username" aria-label="Search" name="query" value="{{ request.GET.query }}">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
 
             {% else %}
             <li class="nav-item">
@@ -86,7 +85,7 @@
     <div class="row justify-content-center pt-3">
       <div class="col-md-4 col-sm-8">
         {% for message in messages %}
-        <div class="alert alert-color fade show" role="alert">{{message}}
+        <div class="alert alert-color fade show" role="alert" id="msg-box">{{message}}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
@@ -128,7 +127,10 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+  integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
