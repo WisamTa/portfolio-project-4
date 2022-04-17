@@ -22,8 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('landing_page.urls')),
     path('accounts/', include('allauth.urls')),
-    path('socialnetwork/', include('socialnetwork.urls')),
+    path('feed/', include('socialnetwork.urls')),
     path('followsystem/', include('followsystem.urls')),
+    path('search/', include('search.urls')),
 ]
 
 if settings.DEBUG:
