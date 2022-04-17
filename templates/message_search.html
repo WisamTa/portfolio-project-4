@@ -5,22 +5,27 @@
 
 {% block content %}
 <div class="container">
+  <div class="row mt-3 ml-5">
+    <div class="col-md-5 col-sm-12">
+        <a href="{% url 'inbox' %}" class="back-btn"><i class="fas fa-chevron-left"></i></a>
+    </div>
+</div>
     <div class="row">
-        <div class="col-md-8 mx-auto col-sm-12 m-2">
+        <div class="col-md-4 mx-auto col-sm-12 m-2">
             <h1 class="rubrics text-center mt-2">Search for a user to start</h1>
         </div>
     </div>
-<div class="row">
-    <div class="col-md-6 mx-auto col-sm-12 mt-2">
-      <form  method="POST">
-        {% csrf_token %}
-        <p id="chat-search" class="text-center">Please Enter username of the user to start chatting</p>
-        {{ form | crispy }}
-        <div class="d-grid gap-2">
-            <button class="btn btn-color" type="submit">Start Chat</button>
-        </div>
-      </form>
+    <div class="row">
+      <div class="col-md-4 mx-auto col-sm-12 mt-2">
+        <form  method="POST">
+          {% csrf_token %}
+          <p id="chat-search" class="text-center">Please Enter username of the user to start chatting</p>
+          {{ form | crispy }}
+          <div class="d-grid gap-2">
+              <button class="btn btn-color" type="submit">Start Chat</button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
 </div>
 {%endblock%}

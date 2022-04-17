@@ -87,6 +87,17 @@ textarea{
     width: 100%;
 }
 
+.back-btn{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-family: 'Handlee';
+}
+.back-btn:hover{
+    color: grey;
+}
+
+
 /*----------------------Profile----------------*/
 
 .follow-btn{
@@ -161,7 +172,7 @@ textarea{
 }
 
 .chat-box{
-    height: 100vh;
+    height: 80%;
     overflow-y: scroll;
     
 }
@@ -174,6 +185,13 @@ textarea{
     font-family: 'Dancing script';
     font-size: 30px;
     font-stretch: 2px;
+}
+
+.conversations{
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    font-family: 'Handlee';
 }
 
 /*--------------------------Footer--------*/

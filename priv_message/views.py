@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.models import User
 from django.db.models import Q
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from .models import Inbox, Thread
 from .forms import InboxForm, MessageForm
 
@@ -101,3 +104,16 @@ class CreateMessage(View):
         message.save()
 
         return redirect('message', pk=pk)
+
+
+class DeleteInboxThread(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    Delete a chat-thread in inbox
+    """
+    model = Inbox
+    template_name = 'delete_inbox.html'
+    success_url = reverse_lazy('inbox')
+
+    def test_func(self):
+        thread = self.get_object()
+        return self.request.user == thread.user

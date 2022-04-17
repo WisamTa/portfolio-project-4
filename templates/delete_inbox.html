@@ -5,15 +5,15 @@
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-5 col-sm-12">
-            <a href="{% url 'post_detail' object.pk %}" class="back-btn"><i class="fas fa-chevron-left back-arrow"></i></a>
+            <a href="{% url 'inbox' %}" class="back-btn"><i class="fas fa-chevron-left back-arrow"></i></a>
         </div>
     </div>
     <div class="row justify-content-center mt-3 m-5">
         <div class="col-md-5 col-sm-12 border-bottom">
             <form method="POST" action="">
                 {% csrf_token %}
-                <h4  class="text-center rubrics">Delete Post</h4>
-                <p>Are you sure you want to delete this post?</p>
+                <h4  class="text-center rubrics">Delete thread</h4>
+                <p>Are you sure you want to delete this conversation?</p>
                 <div class="d-grid gap-2">
                     <button class="btn btn-color mt-3">Delete!</button>
                 </div>

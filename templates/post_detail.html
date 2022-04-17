@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-5 col-sm-12">
-            <a href="{% url 'post_feed' %}"><i class="fas fa-chevron-left back-arrow">Back</i></a>
+            <a href="{% url 'post_feed' %}" class="back-btn"><i class="fas fa-chevron-left back-arrow"></i></a>
         </div>
     </div>
 
@@ -35,7 +35,6 @@
                 </div> 
                     <div class="position-relative"> 
                         <p class="p-body-font m-3">{{ post.body }}</p>
-                        <!--<a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>-->
                     </div>
                     <div class="m-3">
                         <small class="text-muted"> {{ post.created_on }}</small>
@@ -71,7 +70,13 @@
     {% for comment in comments %}
     <div class="row justify-content-center mt-3 m-5">
         <div class="col-md-12 col-sm-12">
-            <p>{{ comment.author }} {{ comment.created_on }}
+            {% if "placeholder" in comment.author.profile.picture.url %}
+            <img class="rounded-circle"  width="30" heigh="30" src="{% static 'image/default_profile.png' %}"/>
+            {% else %}
+            <img class="rounded-circle"  height="30" width="30" src="{{ comment.author.profile.picture.url }}" />
+            {% endif %}
+            <a class="feed-username" href="{% url 'profile' comment.author.profile.pk %}">{{ comment.author }}</a>
+            <p><small class="text-muted">{{ comment.created_on }}</small>
                 {% if request.user == comment.author %}
                 <a href="{% url 'comment_delete' post.pk comment.pk %}"><i class="far fa-trash-alt"></i></a>
             {% endif %}

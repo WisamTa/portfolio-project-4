@@ -105,7 +105,7 @@ class PostDetail(LoginRequiredMixin, View):
             'liked': liked,
             'comments': comments,
         }
-        return render(request, 'post_feed.html', context)
+        return render(request, 'post_detail.html', context)
 
 class PostLike(LoginRequiredMixin, View):
     """
@@ -215,4 +215,4 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         profile = self.get_object()
-        return self.request.user == profile.
+        return self.request.user == profile.user

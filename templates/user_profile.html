@@ -12,7 +12,7 @@
 
 
 <div class="row justify-content-center mt-3 md-3">
-    <div class="col shadow-sm  col-md-6 mx-auto">
+    <div class="col-sm-12  col-md-6 mx-auto">
         <div class="moon-friend">
         <h4 class="m-2 bio-username">@{{ user.username }} 
             <span>
@@ -40,14 +40,14 @@
         <div class="row justify-content-between">
         <div class="col-md-5 col-sm-12">
       {% if "placeholder" in profile.picture.url %}
-      <img src="{% static 'image/default_profile.png' %}" class="profile-image mx-auto shadow-lg rounded-circle" />
+      <img src="{% static 'image/default_profile.png' %}" class="profile-image mx-auto shadow-lg rounded-circle m-5" />
       {% else %}
-      <img src="{{ profile.picture.url }}" class="m-3 profile-image mx-auto shadow-lg rounded-circle" />
+      <img src="{{ profile.picture.url }}" class="m-3 profile-image mx-auto shadow-lg rounded-circle m-5" />
       {% endif %}
 
 </div>
     <div class="col-md-5 col-sm-12 mt-5">
-        <div class="moon-friends">
+        <div class="moon-friends mb-3">
             <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
         </div>
       {% if profile.name %}
