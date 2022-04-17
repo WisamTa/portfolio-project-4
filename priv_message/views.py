@@ -41,7 +41,6 @@ class CreateInboxForm(View):
         form = InboxForm(request.POST)
 
         username = request.POST.get('username')
-        print(username)
 
         try:
             user_receiver = User.objects.get(username=username)
@@ -72,9 +71,8 @@ class Message(View):
     def get(self, request, pk, *args, **kwargs):
         send_form = MessageForm()
         inbox_thread = Inbox.objects.get(pk=pk)
-        print(inbox_thread)
         message_thread = Thread.objects.filter(thread__pk__contains=pk)
-        print(message_thread)
+
 
         context = {
             'inbox_thread': inbox_thread,

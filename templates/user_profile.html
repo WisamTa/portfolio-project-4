@@ -78,6 +78,10 @@
 
 </div>
 </div>
+{% if posts.all.count == 0 %}
+<p class="text-center text-muted m-5">
+  @{{ user.username }} have not post anything yet!</p>
+{% endif %}
 {% for post in posts %}
 <div class="row justify-content-center">
     <div class="col-md-6 mx-auto md-3">

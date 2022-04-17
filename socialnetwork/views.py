@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.views import View
+from django.db.models import Q
 from .models import Post, Comment, Users
 from .forms import PostForm, CommentForm
 from django.views.generic.edit import UpdateView, DeleteView
@@ -15,8 +16,8 @@ class PostList(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         following_feed = request.user
         posts = Post.objects.filter(
-            author__profile__followers__in=[following_feed.id]
-        ).order_by('-created_on')
+            Q(author__profile__followers__in=[following_feed.id]) | Q(
+                author__profile__user__in=[following_feed.id])).order_by('-created_on')
 
         context = {
             'post_feed': posts,
@@ -41,7 +42,11 @@ class Upload(LoginRequiredMixin, View):
         return render(request, 'upload_post.html', context)
 
     def post(self, request, *args, **kwargs):
-        posts = Post.objects.all().order_by('-created_on')
+        following_feed = request.user
+        posts = Post.objects.filter(
+            Q(author__profile__followers__in=[following_feed.id]) | Q(
+                author__profile__user__in=[following_feed.id])).order_by('-created_on')
+
         form = PostForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -49,7 +54,12 @@ class Upload(LoginRequiredMixin, View):
             add_post.author = request.user
             add_post.save()
 
-            return redirect('post_feed')
+        context = {
+            'form': form,
+            'posts': posts,
+        }
+
+        return redirect('post_feed')
 
 
 
@@ -215,4 +225,4 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         profile = self.get_object()
-        return self.request.user == profile.user
+        return self.request.user == profile.

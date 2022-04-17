@@ -106,10 +106,17 @@ textarea{
     font-family: 'Handlee';
 }
 
+.follow-btn:hover{
+    background-color: #76eea6;
+}
+
 .unfollow-btn{
     background-color: #A6BFFF;
     border-radius: 10px;
     font-family: 'Handlee';
+}
+.unfollow-btn:hover{
+    background-color: #7d9ef3;
 }
 
 .profile-image{
