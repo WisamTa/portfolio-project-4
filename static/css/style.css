@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Handlee&display=swap');
+
+
+/*--------------------------Base-----------------*/
+.alert-color{
+    border-radius: 10px;
+    text-align: center;
+    background-color: #F7BAF0;
+}
+
 /*--------------------------Nav/header----------*/
 .nav-color{
     background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);

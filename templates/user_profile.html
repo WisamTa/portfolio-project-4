@@ -10,8 +10,9 @@
   </div>
 </div>
 
+
 <div class="row justify-content-center mt-3 md-3">
-    <div class="col shadow-sm  col-md-8 mx-auto">
+    <div class="col shadow-sm  col-md-6 mx-auto">
         <div class="moon-friend">
         <h4 class="m-2 bio-username">@{{ user.username }} 
             <span>
@@ -79,8 +80,8 @@
 </div>
 {% for post in posts %}
 <div class="row justify-content-center">
-    <div class="col-md-8 mx-auto md-3">
-        <div class="card mb-8 mt-3 mx-auto">  
+    <div class="col-md-6 mx-auto md-3">
+        <div class="card mb-6 mt-3 mx-auto">  
             <div class="position-relative">
                 {% if post.upload %}
                 <img src="{{ post.upload.url }}" class="upload-images">

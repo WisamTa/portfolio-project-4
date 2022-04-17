@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, get_object_or_404
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.views import View
 from .models import Post, Comment, Users
 from .forms import PostForm, CommentForm
@@ -9,20 +9,36 @@ from django.http import HttpResponseRedirect
 
 class PostList(LoginRequiredMixin, View):
     """
-    Views for the feed, listing all existing posts that been created,
-    and a form to create new posts for the feed.
+    Views for the feed, listing all existing posts that been created
+    by the user that you follows.
     """
     def get(self, request, *args, **kwargs):
-        posts = Post.objects.all().order_by('-created_on')
-        form = PostForm()
+        following_feed = request.user
+        posts = Post.objects.filter(
+            author__profile__followers__in=[following_feed.id]
+        ).order_by('-created_on')
 
         context = {
             'post_feed': posts,
-            'form': form,
         }
 
         return render(request, 'post_feed.html', context)
 
+
+class Upload(LoginRequiredMixin, View):
+    """ 
+    Form to upload a post from anywhere you are on the page.
+    And it uploads on your own profile page, and feed.
+    """
+
+    def get(self, request, *args, **kwargs):
+        form = PostForm()
+        
+        context = {
+            'form': form,
+        }
+
+        return render(request, 'upload_post.html', context)
 
     def post(self, request, *args, **kwargs):
         posts = Post.objects.all().order_by('-created_on')
@@ -33,12 +49,9 @@ class PostList(LoginRequiredMixin, View):
             add_post.author = request.user
             add_post.save()
 
-        context = {
-            'post_feed': posts,
-            'form': form,
-        }
+            return redirect('post_feed')
 
-        return render(request, 'post_feed.html', context)
+
 
 
 class PostDetail(LoginRequiredMixin, View):
@@ -202,4 +215,4 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         profile = self.get_object()
-        return self.request.user == profile.user
+        return self.request.user == profile.

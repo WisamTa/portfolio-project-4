@@ -7,6 +7,7 @@ from socialnetwork.models import Users
 class Inbox(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     user_receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    read = models.BooleanField(default=False)
 
 
 
@@ -16,4 +17,3 @@ class Thread(models.Model):
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
     body = models.CharField(max_length=500)
     date = models.DateTimeField(auto_now_add=True)
-    read = models.BooleanField(default=False)

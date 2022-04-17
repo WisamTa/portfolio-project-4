@@ -25,9 +25,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['utopially-community.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['shareit-community.herokuapp.com', 'localhost']
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'post_feed'
+SIGNUP_REDIRECT_URL = 'profile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,7 +80,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'utopially.urls'
+ROOT_URLCONF = 'shareit.urls'
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
 
 TEMPLATES = [
@@ -98,7 +99,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'utopially.wsgi.application'
+WSGI_APPLICATION = 'shareit.wsgi.application'
 
 
 # Database
