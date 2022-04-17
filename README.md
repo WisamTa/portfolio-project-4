@@ -88,6 +88,32 @@ Showing some information of what the site is about, have an about us file and a 
 # Features
 ## Data storage
 ### Post model
+| Title      	| Key in Database   	| Form Validaton 	| Data Type       	|
+|------------	|-------------------	|----------------	|-----------------	|
+| body       	| body         	| max_length=500 	| TextField       	|
+| created_on 	| created_on 	| None           	| DateTimeField    	|
+| author     	| author              	| None           	| ForeignKey      	|
+| upload     	| upload             	| image          	| CloudinaryField 	|
+| likes      	| likes             	| None           	| ManytoManyField 	|
+### Comment model
+| Title      	| Key in Database   	| Form Validaton 	| Data Type     	|
+|------------	|-------------------	|----------------	|---------------	|
+| comment    	| comment           	| max_length=500 	| TextField     	|
+| created_on 	| created_on 	| None           	| DateTimeField 	|
+| author     	| author              	| None           	| ForeignKey    	|
+| post       	| post              	| None           	| ForeignKey    	|
+### Users (profile)
+| Title     	| Key in Database   	| Form Validaton          	| Data Type       	|
+|-----------	|-------------------	|-------------------------	|-----------------	|
+| username      	| user 	| None                    	| OnetoOneField   	|
+| name      	| name              	| max_length=50           	| CharField       	|
+| profile picture   	| picture             	| None                    	| CloudinaryField 	|
+| birthday  	| birthday          	| blank=True              	| DateField       	|
+| gender    	| gender  	| default=Gender.other.id 	| IntegerField    	|
+| location  	| location          	| max_length=100          	| CharField       	|
+| bio       	| bio               	| max_length=500          	| TextField       	|
+| followers 	| followers         	| User, blank=True        	| ManyToManyField 	|
+### Post model
 ### Comment model
 ### Users (profile)
 ## Existing features
