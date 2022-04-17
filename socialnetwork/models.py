@@ -1,6 +1,5 @@
 from django.db import models
 from dj.choices import Choices, Choice
-from dj.choices.fields import ChoiceField
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.db.models.signals import post_save

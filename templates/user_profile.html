@@ -37,7 +37,7 @@
 
         </div>
         <div class="row justify-content-between">
-        <div class=col>
+        <div class="col-md-5 col-sm-12">
       {% if "placeholder" in profile.picture.url %}
       <img src="{% static 'image/default_profile.png' %}" class="profile-image mx-auto shadow-lg rounded-circle" />
       {% else %}
@@ -45,7 +45,7 @@
       {% endif %}
 
 </div>
-    <div class="col mt-5">
+    <div class="col-md-5 col-sm-12 mt-5">
         <div class="moon-friends">
             <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
         </div>

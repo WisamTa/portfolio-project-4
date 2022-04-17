@@ -204,6 +204,24 @@ Select Python as yout first bulid pack in buildpacks window and save that.
 15. Then I choose Automatic Deploys button that will automatically rebuild the app everytime you add, commit and push from GitPod.
 
 # Credits
+* [Django Documentation](https://docs.djangoproject.com/en/4.0/) - I used alot of help to understand django and find solutions for my problems from the django documentation for this project!
+
+* I also used very much help from the Django- I Think Therefore I Blog, walkthough project to start the project and fore some ideas how to do with the comments and likes and to start the project, helped me with the basic structure.
+
+* [Receiver/signals](https://www.codeunderscored.com/signals-in-django/) - using receiver when create new users to not get errors.
+
+* [This](https://www.youtube.com/watch?v=dIcCi2SG1CU) tutorial helped me with the search problem and how to implement ajax and jquery for it.
+
+* [Help with how to upload all images and static](https://www.geeksforgeeks.org/python-uploading-images-in-django/)
+
+* [Following system](https://itsvinayak.hashnode.dev/creating-a-follow-and-unfollow-system-in-django) - Using help from this tutorial how to manage the following system.
+
+* [See followers post in feed](https://stackoverflow.com/questions/55675757/django-queryset-for-getting-feeds-from-following-users)
+
+* [One tutorial for messages](https://www.youtube.com/watch?v=j1voZAmVw9I&t=648s)
+[Another for private messages](https://www.youtube.com/watch?v=oxrQdZ5KqW0) - Using help from this two tutorials for making the private message function.
+
+* All the images that i used is my own or users uploaded photos.
 # Acknowledgements
 
 

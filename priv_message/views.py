@@ -30,7 +30,7 @@ class CreateInboxForm(View):
             'form': form
         }
 
-        return render(request, 'private_message.html', context)
+        return render(request, 'message_search.html', context)
 
     def post(self, request, *args, **kwargs):
         form = InboxForm(request.POST)
@@ -47,11 +47,13 @@ class CreateInboxForm(View):
                        
             elif Inbox.objects.filter(user=user_receiver, user_receiver=request.user).exists():
                 inbox_thread = Inbox.objects.filter(user=user_receiver, user_receiver=request.user)[0]
+
                 return redirect('message', pk=inbox_thread.pk)
 
             if form.is_valid():
                 inbox_thread = Inbox(user=request.user, user_receiver=user_receiver)
                 inbox_thread.save()
+
                 return redirect('message', pk=inbox_thread.pk)
         except:
             return redirect('new-thread')
@@ -63,7 +65,7 @@ class Message(View):
     the information
     """
     def get(self, request, pk, *args, **kwargs):
-        form = MessageForm()
+        send_form = MessageForm()
         inbox_thread = Inbox.objects.get(pk=pk)
         print(inbox_thread)
         message_thread = Thread.objects.filter(thread__pk__contains=pk)
@@ -71,10 +73,10 @@ class Message(View):
 
         context = {
             'inbox_thread': inbox_thread,
-            'message_form': form,
+            'send_form': send_form,
             'message_thread': message_thread
         }
-        return render(request, 'private_message.html', context)
+        return render(request, 'direct_message.html', context)
 
 
 class CreateMessage(View):

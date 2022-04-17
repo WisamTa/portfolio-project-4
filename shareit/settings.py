@@ -25,9 +25,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['shareit-community.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['utopially-community.herokuapp.com', 'localhost']
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'socialnetwork',
     'followsystem',
     'search',
+    'priv_message',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -78,7 +79,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'shareit.urls'
+ROOT_URLCONF = 'utopially.urls'
 CRISPY_TEMPLATES_PACK = 'bootstrap4'
 
 TEMPLATES = [
@@ -97,22 +98,22 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'shareit.wsgi.application'
+WSGI_APPLICATION = 'utopially.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # DATABASES = {
-#   'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
-#   }
-#}
+#     }
+# }
 
 DATABASES = {
-   'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
- }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
