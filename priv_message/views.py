@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from .models import Inbox, Thread
+from .models import Inbox, Thread, Notifications
 from .forms import InboxForm, MessageForm
 
 

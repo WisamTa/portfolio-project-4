@@ -36,11 +36,12 @@
               <div class="list-group col-6 mx-auto">
 
                 <div class="text-center">
+                  
                   <a href="{% url 'message' inbox_thread.pk %}" class="conversations">
-                  {% if "placeholder" in inbox_thread.user.profile.picture.url %}
+                  {% if "placeholder" in inbox_thread.user_receiver.profile.picture.url %}
                   <img class="rounded-circle"  width="25" heigh="25" src="{% static 'image/default_profile.png' %}"/>
                   {% else %}
-                  <img class="rounded-circle"  height="25" width="25" src="{{ inbox_thread.author.profile.picture.url }}" />
+                  <img class="rounded-circle"  height="25" width="25" src="{{ inbox_thread.user_receiver.profile.picture.url }}" />
                   {% endif %}
                 {{ inbox_thread.user_receiver }} </a>
                 {% if request.user == inbox_thread.user %}

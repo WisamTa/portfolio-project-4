@@ -13,6 +13,7 @@ class Search(ListView):
         query = self.request.GET.get('query')
         if not query:
             query = ""
+
         results = Users.objects.filter(
             Q(user__username__icontains=query)
         )

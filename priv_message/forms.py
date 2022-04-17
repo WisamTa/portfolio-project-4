@@ -4,7 +4,7 @@ from .models import Inbox, Thread
 
 class InboxForm(forms.Form):
     username = forms.CharField(
-        max_length=100, 
+        max_length=100,
         label='',
         widget=forms.Textarea(attrs={
             'rows': '1',
@@ -14,7 +14,7 @@ class InboxForm(forms.Form):
 
 class MessageForm(forms.Form):
     message = forms.CharField(
-        label='', 
+        label='',
         max_length=500,
         widget=forms.Textarea(attrs={
             'rows': '3',

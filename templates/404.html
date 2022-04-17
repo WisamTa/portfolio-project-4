@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-3 m-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+                <h4  class="text-center rubrics">404!</h4>
+                <p>Something went wrong! Lets go back</p>
+                <a href="{% url 'inbox' %}" class="back-btn"> Go to start</a>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -7,4 +7,5 @@ urlpatterns = [
     path('chats/new-thread/', CreateInboxForm.as_view(), name='new-thread'),
     path('chats/<int:pk>/', Message.as_view(), name='message'),
     path('chats/<int:pk>/send/', CreateMessage.as_view(), name='send'),
+
 ]

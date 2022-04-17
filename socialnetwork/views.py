@@ -15,9 +15,10 @@ class PostList(LoginRequiredMixin, View):
     """
     def get(self, request, *args, **kwargs):
         following_feed = request.user
+
         posts = Post.objects.filter(
             Q(author__profile__followers__in=[following_feed.id]) | Q(
-                author__profile__user__in=[following_feed.id])).order_by('-created_on')
+                author__profile__in=[following_feed.id])).order_by('-created_on')
 
         context = {
             'post_feed': posts,
@@ -42,10 +43,8 @@ class Upload(LoginRequiredMixin, View):
         return render(request, 'upload_post.html', context)
 
     def post(self, request, *args, **kwargs):
-        following_feed = request.user
-        posts = Post.objects.filter(
-            Q(author__profile__followers__in=[following_feed.id]) | Q(
-                author__profile__user__in=[following_feed.id])).order_by('-created_on')
+       
+        posts = Post.objects.all().order_by('-created_on')
 
         form = PostForm(request.POST, request.FILES)
 
@@ -54,11 +53,7 @@ class Upload(LoginRequiredMixin, View):
             add_post.author = request.user
             add_post.save()
 
-        context = {
-            'form': form,
-            'posts': posts,
-        }
-
+    
         return redirect('post_feed')
 
 
@@ -225,4 +220,4 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         profile = self.get_object()
-        return self.request.user == profile.
+        return self.request.user == profile.user

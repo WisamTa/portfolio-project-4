@@ -14,17 +14,24 @@
     {% if post_feed.all.count == 0 %}
 	<div class="row">
 		<div class="col-md-6 col-sm-12 mt-3 mx-auto">
-			<h4 class="empty-text text-center">Welcome to Utopi'Ally {{ user.username }}!</h4>
-            <p class="text-center">We are happy to have your here and to call you our new moon friend! <br>
-            Im your first guide for what you can do here. <br>
-                So lets start! <br>
-            
-            First, Let us know more about you in your Profile page, upload a awsome profile picture of yourself, or whatever you like. <br>
-            
-            You can search for other users to connect with in the navbar <br>
-            You can upload posts and images for your profile page and for your followers to see in the feed. <br>
-        Like and comment your favourite post<br>
-        And of course, chat with your new moon friends</p>
+			<h4 class="empty-text text-center feed-rubric">Welcome our newest moonfriend <br> {{ user.username }}!</h4>
+            <p class="text-center">We are happy to have your here! <br>
+            Let's start with creating your profile first, and let us know more about you<br><br>
+            <a href="{% url 'profile' request.user.profile.pk %}" class="btn btn-color mr-2">Create Profile</a> 
+            <br>
+            <br>
+            You can upload something here if you like, just click on upload icon in the
+             menu or the button here!
+             <br> 
+             <br> 
+             <a href="{% url 'upload' %}" class="btn btn-color mr-2">Upload!</a> 
+             <br>
+             <br>
+            Search for friends and follow them, to see what they share and like and comment their posts. <br>
+            If you want, you can chat with other users too. <br>
+            Hope you like it here!
+
+        </p>
         
 		</div>
 	</div>

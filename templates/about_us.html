@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10 col-sm-12 text-center">
+            <h2 class="big-font">About us</h2>
+            <p class="mt-3 p-big-font">
+                In this small community, the idea is that we are all friends. 
+                Unlike the big social media, there is no censorship, and you have the opportunity to share your thoughts 
+                and reflections as best you want. Except that you have to follow our basic rule and it is, of course, to 
+                be kind to everyone. Here you can follow others, share your thoughts, and share pictures. You can chat with 
+                other friends and comment and like other people's posts! The idea is to have fun and find like-minded friends. 
+                I hope you will join!
+            </p>
+
+         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body cardbody-color">
+              <h5 class="card-title p-big-font">Join us now</h5>
+              <p class="card-text">Register and become a moon friend, find other friends and share your thoughts and images with your followers</p>
+              <a href="{% url 'account_signup' %}" class="btn btn-color">Register!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body cardbody-color">
+              <h5 class="card-title p-big-font">Already a member?</h5>
+              <p class="card-text">Come on in, we missed you! Check out your inbox for new messages</p>
+              <a href="{% url 'account_login' %}" class="btn btn-color mx-auto">Login!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

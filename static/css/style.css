@@ -8,6 +8,12 @@
     background-color: #F7BAF0;
 }
 
+/*-------------------------------About/contact------*/
+
+.cardbody-color{
+    background-color: rgba(247, 186, 240, 0.3);
+}
+
 /*--------------------------Nav/header----------*/
 .nav-color{
     background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);
@@ -80,6 +86,11 @@
 }
 .liked{
     color: #F7BAF0;
+}
+
+.feed-rubric{
+    font-family: 'Dancing script';
+    font-size: 38px;
 }
 /*-----------------------Post-detail-----------*/
 
@@ -209,4 +220,3 @@ textarea{
 
 .footer-social-bg{
     background: rgb(165 220 213);
-}
