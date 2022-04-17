@@ -113,9 +113,7 @@ Showing some information of what the site is about, have an about us file and a 
 | location  	| location          	| max_length=100          	| CharField       	|
 | bio       	| bio               	| max_length=500          	| TextField       	|
 | followers 	| followers         	| User, blank=True        	| ManyToManyField 	|
-### Post model
-### Comment model
-### Users (profile)
+
 ## Existing features
 * Create an account
   - Using Register from navigationbar
