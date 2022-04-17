@@ -36,15 +36,19 @@
         </h4>
 
         </div>
+        <div class="row justify-content-between">
+        <div class=col>
       {% if "placeholder" in profile.picture.url %}
       <img src="{% static 'image/default_profile.png' %}" class="profile-image mx-auto shadow-lg rounded-circle" />
       {% else %}
       <img src="{{ profile.picture.url }}" class="m-3 profile-image mx-auto shadow-lg rounded-circle" />
       {% endif %}
-      <div class="moon-friends">
-        <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
-    </div>
-    <div class="row">
+
+</div>
+    <div class="col mt-5">
+        <div class="moon-friends">
+            <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
+        </div>
       {% if profile.name %}
       <p class="m-2 bio"><strong>Name: </strong>{{ profile.name }}</p>
       {% endif %}
@@ -64,7 +68,8 @@
       {% else %}
       <p class="m-2 bio"><strong>Gender: </strong>Other</p>
       {% endif %}
-
+    </div>
+    <div class="row">
       {% if profile.bio %}
       <p class="m-3 bio-text">{{ profile.bio }}</p>
       {% endif %}

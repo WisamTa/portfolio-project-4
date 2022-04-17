@@ -92,9 +92,12 @@ class PostDetail(LoginRequiredMixin, View):
             'liked': liked,
             'comments': comments,
         }
-        return render(request, 'post_detail.html', context)
+        return render(request, 'post_feed.html', context)
 
 class PostLike(LoginRequiredMixin, View):
+    """
+    Class for when usr likes a post 
+    """
 
     def post(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
@@ -153,7 +156,12 @@ class CommentDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object()
         return self.request.user == post.author
 
+
 class UserProfile(View):
+    """
+    View for the users profile page that store information and the posts
+    that the user uploads 
+    """
     def get(self, request, pk, *args, **kwargs):
         profile = Users.objects.get(pk=pk)
         user = profile.user
@@ -181,6 +189,9 @@ class UserProfile(View):
 
 
 class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    View for edit the profile page and information 
+    """
     model = Users
     fields = ['picture', 'name', 'location', 'birthday', 'gender', 'bio']
     template_name = 'profile_edit.html'

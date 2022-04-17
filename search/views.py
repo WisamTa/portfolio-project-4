@@ -6,6 +6,9 @@ from socialnetwork.models import Users
 
 
 class Search(ListView):
+    """
+    Class for search after registerd users
+    """
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get('query')
         if not query:

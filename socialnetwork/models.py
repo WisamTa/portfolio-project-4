@@ -26,6 +26,9 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
 
+    def number_of_comments(self):
+        return self.comment.count()
+
 
 # Class for choosing a gender in the User class
 class Gender(Choices):

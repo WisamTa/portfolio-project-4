@@ -54,7 +54,7 @@
               <a class="nav-link" title="social feed"  href="{% url 'post_feed' %}"><i class="far fa-plus-square icon"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" title="Messages" href="#"><i class="far fa-envelope icon"></i></a>
+              <a class="nav-link" title="Messages" href="{% url 'inbox' %}"><i class="far fa-envelope icon"></i></a>
           </li>
 
             <form class="d-flex form-inline" method="GET" action="{% url 'search_user' %}">
@@ -70,10 +70,7 @@
               <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="{% url 'about' %}">About us</a>
             </li>
             {% endif %}
           </ul>

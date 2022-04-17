@@ -27,8 +27,8 @@
 
             {% for post in post_feed %}
             <div class="row justify-content-center">
-                <div class="col-md-8 mx-auto">
-                    <div class="card mb-8 mt-3 mx-auto">  
+                <div class="col-md-6 mx-auto">
+                    <div class="card mb-6 mt-3 mx-auto">  
                         <div class="position-relative">
                             {% if post.upload %}
                             <img src="{{ post.upload.url }}" class="upload-images">
@@ -65,6 +65,9 @@
                                     <span class="text-secondary">{{ post.number_of_likes }}</span>
                                     {% endif %}
                                     <span class="text-secondary"> {{ post.number_of_likes }}  </span>
+                                    <span class="text-secondary"><i class="far fa-comment"></i> {{ post.number_of_comments }}  </span>
+                                    
+                                    
                                 </div>
                     
                     </div>
