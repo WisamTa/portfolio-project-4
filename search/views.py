@@ -13,33 +13,26 @@ class Search(ListView):
 
 def get_result(request):
     if request.is_ajax():
+
         result = None
         username = request.POST.get('username')
         query = Users.objects.filter(user__username__icontains=username)
-        
-        if len(query) > 0 and len(username) >0:
+
+        if len(query) > 0 and len(username) > 0:
             data = []
             for i in query:
                 item = {
                     'pk': i.pk,
-                    'user': i.user,
+                    'user': i.user.username,
                 }
                 data.append(item)
             result = data
+            print(data)
         else:
             result = 'Sorry, no one with that username could be find!'
 
-        return JsonResponse({'data': username})
+        return JsonResponse({
+            'success': '',
+            'data': result
+            })
     return JsonResponse({})
-    """
-    Class for search after registerd users
-    
-    def get(self, request, *args, **kwargs):
-        query = self.request.GET.get('query')
-        if not query:
-            query = ""
-        results = Users.objects.filter(
-            Q(user__username__icontains=query)
-        )
-        return render(request, 'search_users.html', {'results': results})
-        """

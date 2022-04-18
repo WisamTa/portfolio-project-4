@@ -8,13 +8,11 @@ from django.dispatch import receiver
 
 # Models for all posts
 class Post(models.Model):
-
-    body = models.TextField()
+    body = models.TextField(max_length="500")
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     upload = CloudinaryField('image', blank=True, null=True)
     likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    dislike = models.ManyToManyField(User, related_name='dislikes', blank=True)
 
     def number_of_likes(self):
         return self.likes.count()
@@ -22,8 +20,7 @@ class Post(models.Model):
 
 # Models for all comments
 class Comment(models.Model):
-
-    comment = models.TextField()
+    comment = models.TextField(max_length="500")
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
