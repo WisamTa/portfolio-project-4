@@ -12,6 +12,7 @@ class InboxForm(forms.Form):
         })
     )
 
+
 class MessageForm(forms.Form):
     message = forms.CharField(
         label='',

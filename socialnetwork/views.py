@@ -214,4 +214,3 @@ class UserProfileEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         profile = self.get_object()
         return self.request.user == profile.user
-
