@@ -16,7 +16,7 @@
 
 /*--------------------------Nav/header----------*/
 .nav-color{
-    background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);
+    background: linear-gradient(0deg, rgba(189,253,45,1) 5%, rgba(34,193,195,1) 100%);
 }
 
 .nav-font{
@@ -41,10 +41,10 @@
 }
 
 .btn-color{
-    background-color: #A6BFFF;
+    background-color: #bdfd2d;
 }
 .btn-color:hover{
-    background-color: #A4EAC0;
+    background-color: #32f1f4;
 }
 
 .icon:hover{
@@ -219,7 +219,7 @@ textarea{
 /*--------------------------Footer--------*/
 
 .footer-copy{
-    background: linear-gradient(90deg, rgba(166,191,255,1) 1%, rgba(164,234,192,1) 99%);
+    background: linear-gradient(0deg, rgba(189,253,45,1) 5%, rgba(34,193,195,1) 100%);
 }
 
 .footer-social-bg{
