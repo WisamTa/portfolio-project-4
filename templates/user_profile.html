@@ -3,132 +3,135 @@
 
 {% block content %}
 <div class="container">
-  <div class="row justify-content-center mt-5">
-      <div class="col-md-3 col-sm-12">
-          <h4  class="text-center rubrics"><i class="far fa-user big-icon"></i>Profile</h4>
-      </div>
-  </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-3 col-sm-12">
+            <h4 class="text-center rubrics"><i class="far fa-user big-icon"></i>Profile</h4>
+        </div>
+    </div>
 </div>
 
-
+<!--Users profile with photo or default photo and information-->
 <div class="row justify-content-center mt-3 md-3">
     <div class="col-sm-12  col-md-6 mx-auto">
         <div class="moon-friend">
-        <h4 class="m-2 bio-username">@{{ user.username }} 
-            <span>
-                {% if request.user == user %}
-                 <a href="{% url 'profile_edit' profile.pk %}"><i class="fas fa-ellipsis-h"></i></a>
+            <h4 class="m-2 bio-username">@{{ user.username }}
+                <span>
+                    {% if request.user == user %}
+                    <a href="{% url 'profile_edit' profile.pk %}"><i class="fas fa-ellipsis-h"></i></a>
+                    {% endif %}
+                </span>
+                {% if user == request.user %}
+                {% else %}
+                {% if follow %}
+                <form method="POST" action="{% url 'un_follow' profile.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="unfollow-btn">Unfollow</button>
+                </form>
+                {% else %}
+                <form method="POST" action="{% url 'add_follower' profile.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="follow-btn">Follow</button>
+                </form>
                 {% endif %}
-            </span>
-            {% if user == request.user %}
-            {% else %}
-            {% if follow %}
-            <form method="POST" action="{% url 'un_follow' profile.pk %}">
-                {% csrf_token %}
-                <button type="submit" class="unfollow-btn">Unfollow</button>
-            </form>
-            {% else %}
-            <form method="POST" action="{% url 'add_follower' profile.pk %}">
-                {% csrf_token %}
-                <button type="submit" class="follow-btn">Follow</button>
-            </form>
-            {% endif %}
-            {% endif %}
-        </h4>
+                {% endif %}
+            </h4>
 
         </div>
         <div class="row justify-content-between">
-        <div class="col-md-5 col-sm-12">
-      {% if "placeholder" in profile.picture.url %}
-      <img src="{% static 'image/default_profile.png' %}" class="profile-image mx-auto shadow-lg rounded-circle m-5" />
-      {% else %}
-      <img src="{{ profile.picture.url }}" class="m-3 profile-image mx-auto shadow-lg rounded-circle m-5" />
-      {% endif %}
-
-</div>
-    <div class="col-md-5 col-sm-12 mt-5">
-        <div class="moon-friends mb-3">
-            <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
-        </div>
-      {% if profile.name %}
-      <p class="m-2 bio"><strong>Name: </strong>{{ profile.name }}</p>
-      {% endif %}
-
-      {% if profile.location %}
-      <p class="m-2 bio"><strong>Location: </strong>{{ profile.location }}</p>
-      {% endif %}
-
-      {% if profile.birthday %}
-      <p class="m-2 bio"><strong>Birthday: </strong>{{ profile.birthday }}</p>
-      {% endif %}
-
-      {% if profile.gender == 1 %}
-      <p class="m-2 bio"><strong>Gender: </strong>Male</p>
-      {% elif profile.gender == 2 %}
-      <p class="m-2 bio"><strong>Gender: </strong>Female</p>
-      {% else %}
-      <p class="m-2 bio"><strong>Gender: </strong>Other</p>
-      {% endif %}
-    </div>
-    <div class="row">
-      {% if profile.bio %}
-      <p class="m-3 bio-text">{{ profile.bio }}</p>
-      {% endif %}
-    </div>
-
-</div>
-</div>
-{% if posts.all.count == 0 %}
-<p class="text-center text-muted m-5">
-  @{{ user.username }} have not post anything yet!</p>
-{% endif %}
-{% for post in posts %}
-<div class="row justify-content-center">
-    <div class="col-md-6 mx-auto md-3">
-        <div class="card mb-6 mt-3 mx-auto">  
-            <div class="position-relative">
-                {% if post.upload %}
-                <img src="{{ post.upload.url }}" class="upload-images">
+            <div class="col-md-5 col-sm-12">
+                {% if "placeholder" in profile.picture.url %}
+                <img src="{% static 'image/default_profile.png' %}"
+                    class="profile-image mx-auto shadow-lg rounded-circle m-5" />
+                {% else %}
+                <img src="{{ profile.picture.url }}" class="m-3 profile-image mx-auto shadow-lg rounded-circle m-5" />
                 {% endif %}
-                <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
-                </div> 
+
+            </div>
+            <div class="col-md-5 col-sm-12 mt-5">
+                <div class="moon-friends mb-3">
+                    <h5>Moon Friends: {{ profile.number_of_followers }}</h5>
+                </div>
+                {% if profile.name %}
+                <p class="m-2 bio"><strong>Name: </strong>{{ profile.name }}</p>
+                {% endif %}
+
+                {% if profile.location %}
+                <p class="m-2 bio"><strong>Location: </strong>{{ profile.location }}</p>
+                {% endif %}
+
+                {% if profile.birthday %}
+                <p class="m-2 bio"><strong>Birthday: </strong>{{ profile.birthday }}</p>
+                {% endif %}
+
+                {% if profile.gender == 1 %}
+                <p class="m-2 bio"><strong>Gender: </strong>Male</p>
+                {% elif profile.gender == 2 %}
+                <p class="m-2 bio"><strong>Gender: </strong>Female</p>
+                {% else %}
+                <p class="m-2 bio"><strong>Gender: </strong>Other</p>
+                {% endif %}
+            </div>
+            <div class="row">
+                {% if profile.bio %}
+                <p class="m-3 bio-text">{{ profile.bio }}</p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    <!--All the posts that the user has uploaded-->
+    {% if posts.all.count == 0 %}
+    <p class="text-center text-muted m-5">
+        @{{ user.username }} have not post anything yet!</p>
+    {% endif %}
+    {% for post in posts %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 mx-auto md-3">
+            <div class="card mb-6 mt-3 mx-auto">
+                <div class="position-relative">
+                    {% if post.upload %}
+                    <img src="{{ post.upload.url }}" class="upload-images">
+                    {% endif %}
+                    <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
+                </div>
                 <div class="m-3">
                     {% if "placeholder" in post.author.profile.picture.url %}
-                    <img class="rounded-circle"  width="30" heigh="30" src="{% static 'image/default_profile.png' %}"/>
+                    <img class="rounded-circle" width="30" heigh="30" src="{% static 'image/default_profile.png' %}" alt="profile-image" />
                     {% else %}
-                    <img class="rounded-circle"  height="30" width="30" src="{{ post.author.profile.picture.url }}" />
+                    <img class="rounded-circle" height="30" width="30" src="{{ post.author.profile.picture.url }}" alt="profile-image" />
                     {% endif %}
                     <a class="feed-username" href="{% url 'profile' post.author.profile.pk %}">{{ post.author }}</a>
-                </div> 
-                    <div class="position-relative"> 
-                        <p class="p-body-font m-3">{{ post.body }}</p>
-                        <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
-                    </div>
-                    <div class="m-3">
-                        <small class="text-muted"> {{ post.created_on }}</small>
-                        {% if user.is_authenticated %}
-                        <form class="d-inline" action="{% url 'post_like' post.pk %}" method="POST">
+                </div>
+                <div class="position-relative">
+                    <p class="p-body-font m-3">{{ post.body }}</p>
+                    <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
+                </div>
+                <div class="m-3">
+                    <small class="text-muted"> {{ post.created_on }}</small>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'post_like' post.pk %}" method="POST">
                         {% csrf_token %}
                         {% if liked %}
-        
-                            <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="fas fa-moon"></i></button>
-        
+
+                        <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i
+                                class="fas fa-moon"></i></button>
+
                         {% else %}
-                            <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i class="far fa-moon"></i></button>
-        
+                        <button type="submit" name="post_id" value="{{post.pk}}" class="btn-like"><i
+                                class="far fa-moon"></i></button>
+
                         {% endif %}
-                        </form>
-                        {% else %}
-                        <span class="text-secondary">{{ post.number_of_likes }}</span>
-                        {% endif %}
-                        <span class="text-secondary"> {{ post.number_of_likes }}  </span>
-                    </div>
-        
+                    </form>
+                    {% else %}
+                    <span class="text-secondary">{{ post.number_of_likes }}</span>
+                    {% endif %}
+                    <span class="text-secondary"> {{ post.number_of_likes }} </span>
+                </div>
+            </div>
         </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
-      </div>
-  </div>
+</div>
 </div>
 {% endblock content %}

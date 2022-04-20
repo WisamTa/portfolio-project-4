@@ -11,7 +11,7 @@
 /*-------------------------------About/contact------*/
 
 .cardbody-color{
-    background-color: rgba(247, 186, 240, 0.3);
+    background: linear-gradient(0deg, rgba(189,253,45,1) 5%, rgba(34,193,195,1) 100%);
 }
 
 /*--------------------------Nav/header----------*/

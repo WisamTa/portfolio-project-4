@@ -7,13 +7,16 @@ from django.http import JsonResponse
 
 
 class Search(ListView):
+    """
+    View for search template and run
+    when user search.
+    """
     def get(self, request, *args, **kwargs):
         return render(request, 'search_users.html')
 
 
 def get_result(request):
     if request.is_ajax():
-
         result = None
         username = request.POST.get('username')
         query = Users.objects.filter(user__username__icontains=username)
@@ -27,7 +30,6 @@ def get_result(request):
                 }
                 data.append(item)
             result = data
-            print(data)
         else:
             result = 'Sorry, no one with that username could be find!'
 
