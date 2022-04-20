@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import InboxList, DeleteInboxThread, CreateInboxForm, Message,
-CreateMessage
+from .views import InboxList, DeleteInboxThread, CreateInboxForm, Message, CreateMessage
 
 urlpatterns = [
     path('chats/', InboxList.as_view(), name='inbox'),

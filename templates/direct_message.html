@@ -2,61 +2,62 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
+<!--Here is the template for all the messages sent and received in the threads-->
 {% block content %}
 <div class="container">
   <div class="row mt-3">
     <div class="col-md-5 col-sm-12 mt-3">
-        <a href="{% url 'inbox' %}" class="back-btn"><i class="fas fa-chevron-left back-arrow"></i></a>
+      <a href="{% url 'inbox' %}" class="back-btn"><i class="fas fa-chevron-left back-arrow"></i></a>
     </div>
-</div>
-    <div class="row">
-      <div class="col-md-6 mx-auto col-sm-12 m-3">
-        {% if inbox_thread.user_receiver == request.user %}
-          <h3 class="border-bottom text-center second-rubric">Conversation with {{ inbox_thread.user }}</h3>
-        {% else %}
-          <h3 class="border-bottom text-center second-rubric">Conversation with {{ inbox_thread.user_receiver }}</h3>
+  </div>
+  <!--information of the user you have conversations with-->
+  <div class="row">
+    <div class="col-md-6 mx-auto col-sm-12 m-3">
+      {% if inbox_thread.user_receiver == request.user %}
+      <h3 class="border-bottom text-center second-rubric">Conversation with {{ inbox_thread.user }}</h3>
+      {% else %}
+      <h3 class="border-bottom text-center second-rubric">Conversation with {{ inbox_thread.user_receiver }}</h3>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="chat-box mt-4 col-md-8 col-sm-12">
+      <!--If there is no conversations yet, this message will show-->
+      {% if message_thread.all.count == 0 %}
+      <p class="text-center text-muted m-5">
+        No messages here yet! <br>
+        Type somenting and press send, to start the conversation!
+      </p>
+      {% endif %}
+      <!--All the message show here as a list, left for received message and right for sendt-->
+      {% for message in message_thread %}
+      <div class="row m-0 p-0">
+        <div class="col-md-12 mx-auto col-sm-12 m-2">
+          {% if message.sender == request.user %}
+          <div class="message-send">
+            <p class="m-2">{{ message.body }}</p>
+          </div>
+          {% elif message.receiver == request.user %}
+          <div class="message-receiver">
+            <p class="m-2">{{ message.body }}</p>
+          </div>
+        </div>
         {% endif %}
       </div>
+      {% endfor %}
     </div>
-    <div class="row justify-content-center">
-    <div class="chat-box mt-4 col-md-8 col-sm-12">
-      {% if message_thread.all.count == 0 %}
-          <p class="text-center text-muted m-5">
-            No messages here yet! <br>
-            Type somenting and press send, to start the conversation!</p>
-      {% endif %}
-    {% for message in message_thread %}
-    <div class="row m-0 p-0">
-    <div class="col-md-12 mx-auto col-sm-12 m-2" >
-      {% if message.sender == request.user %}
-        <div class="message-send">
-          <p class="m-2">{{ message.body }}</p>
-        </div>
-      {% elif message.receiver == request.user %}
-        <div class="message-receiver">
-          <p class="m-2">{{ message.body }}</p>
-        </div>
-    </div>
-    {% endif %}
   </div>
-  {% endfor %}
-  </div>
-</div>
-    
-
+  <!--The form that sends new messages-->
   <div class="row justify-content-center">
     <div class="col-md-8 mx-auto col-sm-12 m-2">
       <form action="{% url 'send' inbox_thread.pk %}" method="POST">
         {% csrf_token %}
         {{ send_form | crispy }}
         <div class="d-grid gap-2">
-        <button class="btn btn-color" type="submit">Send</button>
+          <button class="btn btn-color" type="submit">Send</button>
         </div>
       </form>
-
     </div>
   </div>
-
-
+</div>
 {%endblock%}
