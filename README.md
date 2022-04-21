@@ -170,11 +170,101 @@ Showing some information of what the site is about, have an about us file and a 
 * Chrome Devtools - Fins issues, bugs and errors during the development on the liveserver.
 * [Cloudinary](https://cloudinary.com/) - Store all the static images that users upload on the site.
 # Testing
+I have testing this project with manual testing. I have test i by myself during the development and once it was deployed.
 ## Manual testing by user storys
 ### EPIC 1
-### Epic 2 
-### Epic 3 
-### Epic 4
+**Implementations**: As a user, I can easily and safely register an account so that I can use my account for the website's purpose.   
+**Test**: I test this by first installing all auth, getting URLs done and the templates, I try to register and the account created, I use to receive signals for register users for saving them without errors in the database.  
+**Result**: This test pass and works fine. 
+
+---
+**Implementations**: As a user I can use my email or username so that i can login with my account  
+**Test**: Testing this by log in with the created account after logging out, using the chosen username when registerd. Not using Email for this site.
+**Result**: This test pass and works how it should.
+
+---
+**Implementations**: As a user, I can easily find where to register and create an account so that I can be a member and join the community.    
+**Test**: During the site, there are options on the landing page and about us page to register and log in and in the menu in the navbar.
+**Result**: This test pass and works how it should. 
+
+---
+**Implementations**: As a user, I can easily navigate through the site from anywhere I am on the site, so that makes it easier to use and do what I suppose to.       
+**Test**: Users have access to the navbar menu from anywhere they are on the site, with options to upload, go to inbox, go to home/feed or search, go to the profile page, or log out from the menu.   
+**Result**: This test pass and works how it should.
+
+---
+### EPIC 2 Profile
+**Implementations**: As a user, I can edit my profile page, add/edit and delete pictures and information so that I can control what to share and make my profile more flexible.      
+**Test**: From the users' profile page, you can click on every post that I, as a user, have uploaded and, from there, delete or edit a post.    
+**Result**: This test pass and works how it should. 
+
+---
+**Implementations**: As a user, I can Add and change my profile image so that Other users can see who I am.      
+**Test**: From the profile page the user can edit its personal information and add and change a profile picture from the edit page.    
+**Result**: This test pass and works how it should.   
+
+---
+**Implementations**: As a user, I can add information to my biography about myself so that other users get to know me better through my profile page.      
+**Test**:  You can edit your personal information from the profile page to add a bio or edit/remove it.    
+**Result**: This test pass and works how it should.   
+
+---
+**Implementations**: As a user, I can save all my posts on my page so that it is easy to view what I uploaded and see what other users have shared on their profiles.      
+**Test**: When a user has uploaded a post, the post is shared on the feed and saved on the profile page automatically.    
+**Result**: This test pass and works how it should.   
+
+---
+**Implementations**: As a user, I can choose to upload something from the homepage or from anywhere I am on the site so that I don't have to go back or forward to do that task.      
+**Test**: In the navigation bar on the top, there is a link for upload, and you can click on it from anywhere on the site. And takes you to the uploading form, and when you submit and upload the post, you get to the feed    
+**Result**: This test pass and works how it should.   
+
+---
+**Implementations**: As a user, I can like a photo from the feed so that the user who uploaded the post can see that I liked it.      
+**Test**: You can like the photo by clicking on the post for the detail page, then selecting it, but there is no notification to see who has liked it.    
+**Result**: This test does not pass because it doesn't do precisely as the implementations, but it has a similar function.
+
+---
+**Implementations**: As a user, I can comment/edit or delete a user's post so that I can give feedback or discuss what users upload and regret if I want to change or remove it.      
+**Test**: As a user, you can comment on other users or your posts from the post detail page when you click on it. You can edit or delete your comments too.      
+**Result**: This test pass.   
+
+---
+**Implementations**: As a user, I can edit or delete my uploaded posts so that I can change something in my already uploaded post or delete it if I regret uploading it.      
+**Test**: As a user, I can click on my own post in the feed or from my profile page so that  I see it in the post detail view, and from there, I have an edit button and a delete button to make changes to my post or delete it completely.      
+**Result**: This test pass.   
+
+---
+### EPIC 3 Search User
+**Implementations**: As a user, I can search after other users by their usernames, names, and locations so that I can find other users in my area or find a user that I want to check out their profile page.      
+**Test**: As a user, I can choose to click on search from the navbar and search after other users by their username only, and not location or name.      
+**Result**: This test pass but it is not fully functional with all the search choices yet.   
+
+---
+**Implementations**: As a user, I can add a friend to a friend list or follow list so that I can see what this person uploads quickly and get in touch.      
+**Test**: When I, as a user, visit other users' profile pages, I can choose to follow them by a button, and when I follow someone, I can see what that user uploads in my feed.      
+**Result**: This test pass.   
+
+---
+**Implementations**: As a user, I can unfollow or unfriend a user so that I can regret it or, if I follow by mistake, can undo it.      
+**Test**: From a user's profile page, you can choose to follow or unfollow by a button with no problem.      
+**Result**: This test pass.   
+
+---
+### EPIC 4 Direct Messages
+**Implementations**: As a user, I can Send a private message to another user so that It's easy to start a conversation and speak to other users one by one.      
+**Test**: As a user, I can go to my inbox and search for a user I want to start to chat with and send messages to, or if I get a message, I can go to that thread from my inbox.      
+**Result**: This test pass.   
+
+---
+**Implementations**: As a user, I can get private messages from other users in an inbox so that I can sort and see where my messages go and save.      
+**Test**: All messages that have been created from different users are stored in threads in my inbox.      
+**Result**: This test pass.   
+
+---
+**Implementations**: As a user, I can Delete messages from my inbox so that I  can clear my inbox and delete those that I don't want to save.      
+**Test**: As a user, I can delete threads that I have in my inbox, and all the messages that have been sent to that user will be deleted for me.      
+**Result**: This test pass. 
+
  ## Validator testing
 ### CSS
 ### Javascript
