@@ -6,5 +6,5 @@ from socialnetwork.views import UserProfile
 urlpatterns = [
     path('search/', Search.as_view(), name='search_user'),
     path('result/', get_result, name='result-list'),
-    path('result/<int:pk>', UserProfile.as_view(), name='search_user'),
+    path('search/<pk>/', UserProfile.as_view(), name='search_user'),
 ]
