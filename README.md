@@ -169,6 +169,7 @@ Showing some information of what the site is about, have an about us file and a 
 * [Color palett generator](https://coolors.co/) - Make my palette of colors
 * Chrome Devtools - Fins issues, bugs and errors during the development on the liveserver.
 * [Cloudinary](https://cloudinary.com/) - Store all the static images that users upload on the site.
+* [Designhill](https://www.designhill.com/) - Paid Logo maker, from this website I generated my project/app logo.
 # Testing
 I have testing this project with manual testing. I have test i by myself during the development and once it was deployed.
 ## Manual testing by user storys
