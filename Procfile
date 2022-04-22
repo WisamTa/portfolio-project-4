@@ -1,1 +1,1 @@
-web: gunicorn shareit.wsgi:application
+web: gunicorn shareit.wsgi

@@ -25,7 +25,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+X_FRAM_OPTIONS = 'SAMORIGIN'
 
 ALLOWED_HOSTS = ['shareit123.herokuapp.com', 'localhost']
 
@@ -136,6 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
