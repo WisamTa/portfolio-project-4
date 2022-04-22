@@ -2,81 +2,78 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+<!--Post Feed template, storing all the post that uploads in the feed-->
 {% block content %}
 <div class="container">
     <div class="row justify-content-center mt-4">
         <div class="col-md-5 col-sm-12 border-bottom">
-            <h4  class="text-center rubrics"><i class="far fa-plus-square big-icon"></i>Feed</h4>
+            <h4 class="text-center rubrics"><i class="far fa-plus-square big-icon"></i>Feed</h4>
             <h5 class="text-center">Logged in as @{{ user.username }}
             </h5>
         </div>
     </div>
+    <!--If the user has no uploads, this message show as a information page how this site works-->
     {% if post_feed.all.count == 0 %}
-	<div class="row">
-		<div class="col-md-6 col-sm-12 mt-3 mx-auto">
-			<h4 class="empty-text text-center feed-rubric">Welcome our newest moonfriend <br> {{ user.username }}!</h4>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 mt-3 mx-auto">
+            <h4 class="empty-text text-center feed-rubric">Welcome our newest moonfriend <br> {{ user.username }}!</h4>
             <p class="text-center">We are happy to have your here! <br>
-            Let's start with creating your profile first, and let us know more about you<br><br>
-            <a href="{% url 'profile' request.user.profile.pk %}" class="btn btn-color mr-2">Create Profile</a> 
-            <br>
-            <br>
-            You can upload something here if you like, just click on upload icon in the
-             menu or the button here!
-             <br> 
-             <br> 
-             <a href="{% url 'upload' %}" class="btn btn-color mr-2">Upload!</a> 
-             <br>
-             <br>
-            Search for friends and follow them, to see what they share and like and comment their posts. <br>
-            If you want, you can chat with other users too. <br>
-            Hope you like it here!
-
-        </p>
-        
-		</div>
-	</div>
-	{% endif %}
-
-</div>
-
-            {% for post in post_feed %}
-            <div class="row justify-content-center m-0">
-                <div class="col-md-6 mx-auto">
-                    <div class="card mb-6 mt-3 mx-auto">  
-                        <div class="position-relative">
-                            {% if post.upload %}
-                            <img src="{{ post.upload.url }}" class="upload-images">
-                            {% endif %}
-                            <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
-                            </div> 
-                            <div class="m-3">
-                                {% if "placeholder" in post.author.profile.picture.url %}
-                                <img class="rounded-circle"  width="30" heigh="30" src="{% static 'image/default_profile.png' %}"/>
-                                {% else %}
-                                <img class="rounded-circle"  height="30" width="30" src="{{ post.author.profile.picture.url }}" />
-                                {% endif %}
-                                <a class="feed-username" href="{% url 'profile' post.author.profile.pk %}">{{ post.author }}</a>
-                            </div> 
-                                <div class="position-relative"> 
-                                    <p class="p-body-font m-3">{{ post.body }}</p>
-                                    
-                                
-                                <div class="col justify-between m-3">
-                                    <small class="text-muted"> {{ post.created_on }} </small>
-
-                                    <div class="mt-2">
-                                        <p><i class="far fa-moon"></i> Likes <span class="text-secondary"> {{ post.number_of_likes }} </span><i class="far fa-comment"></i> Comments </p>
-                                    </div>
-                                    <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
-                                </div>
-                                </div>
-                    
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+                Let's start with creating your profile first, and let us know more about you<br><br>
+                <a href="{% url 'profile' request.user.profile.pk %}" class="btn btn-color mr-2">Create Profile</a>
+                <br>
+                <br>
+                You can upload something here if you like, just click on upload icon in the
+                menu or the button here!
+                <br>
+                <br>
+                <a href="{% url 'upload' %}" class="btn btn-color mr-2">Upload!</a>
+                <br>
+                <br>
+                Search for friends and follow them, to see what they share and like and comment their posts. <br>
+                If you want, you can chat with other users too. <br>
+                Hope you like it here!
+            </p>
         </div>
     </div>
+    {% endif %}
+</div>
+<!--Here is the code for listing all the uploaded post from followers-->
+{% for post in post_feed %}
+<div class="row justify-content-center m-0">
+    <div class="col-md-6 mx-auto">
+        <div class="card mb-6 mt-3 mx-auto">
+            <div class="position-relative">
+                {% if post.upload %}
+                <img src="{{ post.upload.url }}" class="upload-images">
+                {% endif %}
+                <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a>
+            </div>
+            <div class="m-3">
+                {% if "placeholder" in post.author.profile.picture.url %}
+                <img class="rounded-circle" width="30" heigh="30" src="{% static 'image/default_profile.png' %}" />
+                {% else %}
+                <img class="rounded-circle" height="30" width="30" src="{{ post.author.profile.picture.url }}" />
+                {% endif %}
+                <a class="feed-username" href="{% url 'profile' post.author.profile.pk %}">{{ post.author }}</a>
+            </div>
+            <!--This div is stretched so when user click on it it takes them to the post detail-->
+            <div class="position-relative">
+                <p class="p-body-font m-3">{{ post.body }}</p>
+                <div class="col justify-between m-3">
+                    <small class="text-muted"> {{ post.created_on }} </small>
+                    <div class="mt-2">
+                        <p><i class="far fa-moon"></i> Likes <span class="text-secondary"> {{ post.number_of_likes }}
+                            </span><i class="far fa-comment"></i> Comments </p>
+                    </div>
+                    <a href="{% url 'post_detail' post.pk %}" class="stretched-link"></a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+</div>
 </div>
 {%endblock%}
       

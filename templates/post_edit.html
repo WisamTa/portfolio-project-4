@@ -2,16 +2,18 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+<!--Holding the form that the user can edit their uploaded posts-->
 {% block content %}
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-5 col-sm-12">
-            <a href="{% url 'post_detail' object.pk %}" class="back-btn"><i class="fas fa-chevron-left back-arrow"></i></a>
+            <a href="{% url 'post_detail' object.pk %}" class="back-btn"><i
+                    class="fas fa-chevron-left back-arrow"></i></a>
         </div>
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-md-5 col-sm-12 border-bottom">
-            <h4  class="text-center rubrics">Edit</h4>
+            <h4 class="text-center rubrics">Edit</h4>
         </div>
     </div>
     <div class="row justify-content-center mt-3 m-5">
@@ -26,7 +28,7 @@
         </div>
     </div>
 </div>
-        </div>
-    </div>
+</div>
+</div>
 </div>
 {%endblock%}

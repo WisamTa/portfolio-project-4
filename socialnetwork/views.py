@@ -18,8 +18,8 @@ class PostList(LoginRequiredMixin, View):
         following_feed = request.user
 
         posts = Post.objects.filter(
-            Q(author__profile__followers__in=[following_feed.id]) | Q(
-                author__profile__in=[following_feed.id])).order_by('-created_on')
+            Q(author__profile__followers__in=[following_feed.id]) |
+            Q(author__profile__in=[following_feed.id])).order_by('-created_on')
 
         context = {
             'post_feed': posts,
@@ -33,7 +33,6 @@ class Upload(LoginRequiredMixin, View):
     Form to upload a post from anywhere you are on the page.
     And it uploads on your own profile page, and feed.
     """
-
     def get(self, request, *args, **kwargs):
         form = PostForm()
 
@@ -109,7 +108,6 @@ class PostLike(LoginRequiredMixin, View):
     """
     Class for when usr likes a post
     """
-
     def post(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
 
@@ -127,7 +125,7 @@ class PostEdit(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     to the post detail template when user has submit the edit.
     """
     model = Post
-    fields = ['body']
+    fields = ['body', 'upload']
     template_name = 'post_edit.html'
 
     def get_success_url(self):
