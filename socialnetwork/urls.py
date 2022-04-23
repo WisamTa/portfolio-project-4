@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import PostList, Upload, PostDetail, PostEdit, PostDelete,
+from .views import PostList, Upload, PostDetail, PostEdit, PostDelete
 from .views import CommentDelete, UserProfile, UserProfileEdit, PostLike
 
 
