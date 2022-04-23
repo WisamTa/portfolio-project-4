@@ -70,22 +70,30 @@ shareit is a social media website, where users can register an account, login an
   * Personal page for the user, with fields of information to add about themself
   * Add profile image and edit profile.
   * See how many followers (moon friends) they have and a button to follow or unfollow other users.
-  * Uploaded posts that the user have is collected on their own pages.  
+  * Uploaded posts that the user have is collected on their own pages.
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/editprofile.PNG)
+  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/profile%20page.png)
+    
 * Inbox
   * An inbox that gathers all active threads
   * Start a new chat and search for a user to start chatting with
-  * The conversation/chat with send and received messages.  
+  * The conversation/chat with send and received messages.
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/inboxpic.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/searchforcaht.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/conversation.PNG)
 * Search
   * search input box on its own template, from the navbar.
-  * shows all users that include the search query.  
+  * shows all users that include the search query.
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/searchuser.PNG)
 * Upload
-  * From navbar users can upload a post/image that uploads in the feed (and profile page)  
+  * From navbar users can upload a post/image that uploads in the feed (and profile page)
+    ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/upload.PNG)
 * post detail
   * When user want to comment or like, the user has to click on the post to get more details and show comments.
   * From post detail you can edit or delete your own posts and delete comments that user have made.  
 * Footer
   * contains links to site owners social media  
-    ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReadme/footer.PNG)
+    ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/footer.PNG)
 
 ## Design Choises
 ### Fonts
