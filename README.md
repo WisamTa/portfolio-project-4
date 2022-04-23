@@ -364,6 +364,8 @@ For saving code from django, I need to save it by the commands **python3 manage.
 
 * All the images that i used is my own or users uploaded photos.
 # Acknowledgements
+This project was built in 11 days, I worked hard and intensively on it I sat before my screen each day for over 14 hours, I only took a walk during the day to help my eyes to recover and I see the hardwork paid of. 
+Thanks for every one have me a hand from the tutor support to my mentor to the collegues on Slack community to my enginering and developer friends. 
 
 
 
