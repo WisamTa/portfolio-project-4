@@ -59,20 +59,20 @@ shareit is a social media website, where users can register an account, login an
 
 ## Structure
 * Landing page.
-  Start page for un authentical users Showing some information of what the site is about, have an about us file and a login and register form.  
+  * Start page for un authentical users Showing some information of what the site is about, have an about us file and a login and register form.  
 ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/landingpage.PNG)  
-  Sign in, which is a form that will lead to exploring the app and using it 
+  * Sign in, which is a form that will lead to exploring the app and using it 
 ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/signin.PNG)
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/start-menu.PNG)
   
 * Landingpage for logged in users
-  * Feed, when the user signs up, they are provided some information on how to upload, create more info on the profile page. This text will dissipate when users upload their first post or start following users who have uploaded posts earlier.  
+  * Feed, when the user signs up, they are provided some information on how to upload, create more info on the profile page. This text will disappare when users upload their first post or start following users who have uploaded posts earlier.  
 * Profile page
   * Personal page for the user, with fields of information to add about themself
   * Add profile image and edit profile.
   * See how many followers (moon friends) they have and a button to follow or unfollow other users.
   * Uploaded posts that the user have is collected on their own pages.
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/editprofile.PNG)
-  ![](https://github.com/StinaAxelsson/portfolio-project-4/blob/main/media/imagesReadme/profile%20page.png)
     
 * Inbox
   * An inbox that gathers all active threads
@@ -81,6 +81,7 @@ shareit is a social media website, where users can register an account, login an
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/inboxpic.PNG)
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/searchforcaht.PNG)
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/conversation.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/inbox.PNG)
 * Search
   * search input box on its own template, from the navbar.
   * shows all users that include the search query.
