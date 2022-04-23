@@ -58,10 +58,14 @@ shareit is a social media website, where users can register an account, login an
 * Have a site that works propely without many errors. 
 
 ## Structure
-* Landing page/start page for un authentical users.
-Showing some information of what the site is about, have an about us file and a login and register form.  
+* Landing page.
+  Start page for un authentical users Showing some information of what the site is about, have an about us file and a login and register form.  
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/landingpage.PNG)  
+  Sign in, which is a form that will lead to exploring the app and using it 
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/signin.PNG)
+  
 * Landingpage for logged in users
-  * Feed, when user sign up they are provide some information of how to upload, create more information in profile page, this text will dissapere when the user upload their first post or start follow users who have upload posts earlier.  
+  * Feed, when the user signs up, they are provided some information on how to upload, create more info on the profile page. This text will dissipate when users upload their first post or start following users who have uploaded posts earlier.  
 * Profile page
   * Personal page for the user, with fields of information to add about themself
   * Add profile image and edit profile.
@@ -81,6 +85,8 @@ Showing some information of what the site is about, have an about us file and a 
   * From post detail you can edit or delete your own posts and delete comments that user have made.  
 * Footer
   * contains links to site owners social media  
+    ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReadme/footer.PNG)
+
 ## Design Choises
 ### Fonts
 ### Colours
