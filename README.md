@@ -112,6 +112,10 @@ I have two main fonts from Google Fonts.
 'Handlee' and 'Dancing script' that meet up my thoughts of how i want a first time user want to feel when they visit. Soft and friendly and kind of playful. Using this in the Logo and as rubric. And Handlee is using as rubrics and bread-text.
 ### Colours
 ## Wireframes
+I have been following the structure from the wireframes, with some changes for message and the notifications that i chose to not go with on this project for the lack of time and knowledge for that.
+* [Desktop](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/browser%20wireframes.pdff)
+* [Tablet](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/Tablet%20wireframes.pdf)
+* [Mobile](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/Mobile%20wireframes.pdf)
 # Features
 ## Data storage
 ### Post model
