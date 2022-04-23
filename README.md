@@ -315,16 +315,24 @@ For saving code from django, I need to save it by the commands **python3 manage.
 2. Select "new" and "Create new app" from the dashboard.
 3. Create a unique name for the project
 4. Navigate from the deploy tab at the top and select the setting tab.
-5. Because I use Code Institute template, I need to add a config var for creating this app. (Not necessary if you do not use the template)
-6. Select Reveal config vars button. In KEY field, input PORT with capital letters. In VALUE field, input 8000 and then select add button.
-Select Python as yout first bulid pack in buildpacks window and save that.
-9. Select the deploy tab again and go to the deployment method section.
-10. Select GitHub - connect to GitHub button and follow the steps to connect to your GitHub account.
-11. Select your account and enter the name of your repository and then select search.
-12. When Heroku has find your repository select connect to connect the repository to the app within Heroku.
-13. Below App connected section, I choose to manual deployments options further down.
-14. When that is done correctly this will provide me the live link for this programe.
-15. Then I choose Automatic Deploys button that will automatically rebuild the app everytime you add, commit and push from GitPod.
+5. Select Reveal config vars button. In KEY fields add CLOUDINARY_URL, DATABASE_URL, HEROKU_HOSTNAME, SECRET_KEY
+6. Select Python as yout first bulid pack in buildpacks window and save that.
+7. Due to a recent security breach, Heroku has suspended all continuous integration/deployment from Github.
+   So now it needs to be done via the CLI
+8. To login to Heroku with Multi-Factor Authentication enabled, I navigat to the account setting 
+9. Scroll down to the API Key section, then click on the 'reveal' button, and copy the API Key
+10. Then run the command in your terminal:
+    heroku login -i
+11. Type in email address
+12. Your API Key should now paste into the Password field.
+    Hit enter, and Heroku should log you in now.
+13. After logging in, get the app name from heroku, command: heroku apps
+    Set the heroku remote. 
+    command: heroku git:remote -a shareit123
+14. Add, commit and push to github
+15. Push to both github and heroku
+     command: git push origin main
+     command: git push heroku main 
 
 # Credits
 * [Django Documentation](https://docs.djangoproject.com/en/4.0/) - I used alot of help to understand django and find solutions for my problems from the django documentation for this project!
