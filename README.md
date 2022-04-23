@@ -66,38 +66,48 @@ shareit is a social media website, where users can register an account, login an
 ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/start-menu.PNG)
   
 * Landingpage for logged in users
-  * Feed, when the user signs up, they are provided some information on how to upload, create more info on the profile page. This text will disappare when users upload their first post or start following users who have uploaded posts earlier.  
+  * Feed, when the user signs up, they are provided some information on how to upload, create more info on the profile page. This text will disappare when users upload their first post or start following users who have uploaded posts earlier.
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/startpage.PNG)
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/navbar.PNG)
 * Profile page
   * Personal page for the user, with fields of information to add about themself
   * Add profile image and edit profile.
   * See how many followers (moon friends) they have and a button to follow or unfollow other users.
   * Uploaded posts that the user have is collected on their own pages.
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/editprofile.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/profile-follow-unfollow.PNG)
     
 * Inbox
   * An inbox that gathers all active threads
   * Start a new chat and search for a user to start chatting with
   * The conversation/chat with send and received messages.
+  * Delete chat.
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/inboxpic.PNG)
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/searchforcaht.PNG)
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/conversation.PNG)
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/inbox.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/deletechat_LI.jpg)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/deletethread.PNG)
 * Search
   * search input box on its own template, from the navbar.
   * shows all users that include the search query.
   ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/searchuser.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/searchnotfound.PNG)
 * Upload
   * From navbar users can upload a post/image that uploads in the feed (and profile page)
     ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/upload.PNG)
 * post detail
   * When user want to comment or like, the user has to click on the post to get more details and show comments.
-  * From post detail you can edit or delete your own posts and delete comments that user have made.  
+  * From post detail you can edit or delete your own posts and delete comments that user have made.
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/postdetail.PNG)  
 * Footer
   * contains links to site owners social media  
     ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/footer.PNG)
 
 ## Design Choises
 ### Fonts
+I have two main fonts from Google Fonts. 
+'Handlee' and 'Dancing script' that meet up my thoughts of how i want a first time user want to feel when they visit. Soft and friendly and kind of playful. Using this in the Logo and as rubric. And Handlee is using as rubrics and bread-text.
 ### Colours
 ## Wireframes
 # Features
@@ -159,6 +169,11 @@ shareit is a social media website, where users can register an account, login an
 * Visit other users profile pages
   - You can visit other user by their posts in the feed, comment section or search.
 ## Features left to implement
+Features I want to implement in the future for this project
+* Notifications for when users get new followers, likes,  comments
+ Or messages. This feature is something I want to add to expand the user's experience for a social media site!
+*  To see a list of the users that follows you or follow other users.
+
 # Technologies used
 ## Languages
 * HTML5
