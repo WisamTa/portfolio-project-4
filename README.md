@@ -99,7 +99,9 @@ shareit is a social media website, where users can register an account, login an
 * post detail
   * When user want to comment or like, the user has to click on the post to get more details and show comments.
   * From post detail you can edit or delete your own posts and delete comments that user have made.
-  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/postdetail.PNG)  
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/postdetail.PNG)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/unlikebtn_LI%20(2).jpg)
+  ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/likebtn_LI.jpg) 
 * Footer
   * contains links to site owners social media  
     ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/footer.PNG)
