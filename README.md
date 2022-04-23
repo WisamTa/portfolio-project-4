@@ -300,8 +300,12 @@ I have testing this project with manual testing. I have test i by myself during 
 
  ## Validator testing
 ### CSS
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/cssvalidation.PNG)
 ### Javascript
+After asuming that the user uses New JavaScript features (ES6) in configure list, the code passed
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/Jsvalidation.PNG)
 ### HTML
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/Htmlvalidation.PNG)
 ### Python
 ## Bugs
 
