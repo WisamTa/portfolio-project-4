@@ -307,7 +307,9 @@ After asuming that the user uses New JavaScript features (ES6) in configure list
 ### HTML
 ![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/Htmlvalidation.PNG)
 ### Python
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/pythontesting.PNG)
 ## Bugs
+During the development of this project, I got alot of bugs and errors. Some of them was easy to fix by just read what the error message that telling me what is wrong. Small errors like indent problems, forgot to import something from views, models or urls, spelling errors in the variables etc. Then I got bigger issues and errors that I had more problem to solve. some of them I solved after searching through the entire internet and found good answers in eg stackoverflow and similar forums. Some problems I had to get help from tutor support who has helped me solve some of the biggest bugs during the project.
 
 # Deployment
 When I started this project, I had to use Code Institutes template to be able to deploy it in Heroku and save all files that is secret in an gitignore file that came along the template. 
@@ -325,18 +327,16 @@ For saving code from django, I need to save it by the commands **python3 manage.
    So now it needs to be done via the CLI
 8. To login to Heroku with Multi-Factor Authentication enabled, I navigat to the account setting 
 9. Scroll down to the API Key section, then click on the 'reveal' button, and copy the API Key
-10. Then run the command in your terminal:
-    heroku login -i
+10. Then run the command in the terminal: heroku login -i
 11. Type in email address
-12. Your API Key should now paste into the Password field.
+12. The  API Key should now paste into the Password field.
     Hit enter, and Heroku should log you in now.
 13. After logging in, get the app name from heroku, command: heroku apps
     Set the heroku remote. 
     command: heroku git:remote -a shareit123
 14. Add, commit and push to github
 15. Push to both github and heroku
-     command: git push origin main
-     command: git push heroku main 
+     command: git push origin main, command: git push heroku main 
 
 # Credits
 * [Django Documentation](https://docs.djangoproject.com/en/4.0/) - I used alot of help to understand django and find solutions for my problems from the django documentation for this project!
