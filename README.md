@@ -318,7 +318,8 @@ After asuming that the user uses New JavaScript features (ES6) in configure list
 ## Bugs
 During the development of this project, I got alot of bugs and errors. Some of them was easy to fix by just read what the error message that telling me what is wrong. Small errors like indent problems, forgot to import something from views, models or urls, spelling errors in the variables etc. Then I got bigger issues and errors that I had more problem to solve. some of them I solved after searching through the entire internet and found good answers in eg stackoverflow and similar forums. Some problems I had to get help from tutor support who has helped me solve some of the biggest bugs during the project.
 
-Final bug (about styling django adminstration) emerged in the last minutes for submmutting. I renamed the url in cloudinay to match the one in the console error and hardrefreshed the page but did not go very, so me mentor suggested to add as a bug in Readme file. 
+Final bug (about styling django adminstration) emerged in the last minutes for submmutting. I renamed the url in cloudinay to match the one in the console error and hardrefreshed the page but did not go very, so me mentor suggested to add as a bug in Readme file.
+![](https://github.com/WisamTa/portfolio-project-4/blob/main/media/imagesReamde/bug.PNG)
 
 # Deployment
 When I started this project, I had to use Code Institutes template to be able to deploy it in Heroku and save all files that is secret in an gitignore file that came along the template. 
