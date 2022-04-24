@@ -115,7 +115,7 @@ The color is between #bdfd2d, 22c23c and chose this type of coloring because I w
 ![](https://raw.githubusercontent.com/WisamTa/portfolio-project-4/main/media/imagesReamde/colors.PNG)
 ## Wireframes
 I have been following the structure from the wireframes, with some changes for message and the notifications that i chose to not go with on this project for the lack of time and knowledge for that.
-* [Desktop](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/browser%20wireframes.pdff)
+* [Desktop](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/browser%20wireframes.pdf)
 * [Tablet](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/Tablet%20wireframes.pdf)
 * [Mobile](https://github.com/WisamTa/portfolio-project-4/blob/main/media/wireframes/Mobile%20wireframes.pdf)
 # Features
